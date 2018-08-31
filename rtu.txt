@@ -1,0 +1,6 @@
+	ƒл€ правильной настройки при компил€ции секции .boot необходимо произвести следующее изменение в файле
+<DISK>:\ethernut\nut\app\Makedefs - после символов "-Wl," добавить "--section-start=.bootloader=0x1F000," -
+т.о., код, отвечающий за перепрошивку Charon II, помещаетс€ в неперепрошиваемую область по адресу 0x1F000.
+
+nut\app\Makevars.avr-gcc
+ --section-start=.uartloader=0x1F000,--section-start=.bootloader=0x1F086,

@@ -1,0 +1,394 @@
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cc7LJIv3.s 			page 1
+
+
+   1               		.file	"dallas.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.section	.text.ds_reset,"ax",@progbits
+   9               	.global	ds_reset
+  10               		.type	ds_reset, @function
+  11               	ds_reset:
+  12               	/* prologue: function */
+  13               	/* frame size = 0 */
+  14 0000 8F9A      		sbi 49-32,7
+  15 0002 979A      		sbi 50-32,7
+  16 0004 8FE0      		ldi r24,lo8(15)
+  17               	/* #APP */
+  18               	 ;  83 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+  19 0006 8A95      		1: dec r24
+  20 0008 01F4      		brne 1b
+  21               	 ;  0 "" 2
+  22               	/* #NOAPP */
+  23 000a 8F9A      		sbi 49-32,7
+  24 000c 9798      		cbi 50-32,7
+  25 000e 81EF      		ldi r24,lo8(2033)
+  26 0010 97E0      		ldi r25,hi8(2033)
+  27               	/* #APP */
+  28               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+  29 0012 0197      		1: sbiw r24,1
+  30 0014 01F4      		brne 1b
+  31               	 ;  0 "" 2
+  32               	/* #NOAPP */
+  33 0016 8F98      		cbi 49-32,7
+  34 0018 979A      		sbi 50-32,7
+  35 001a 8CE2      		ldi r24,lo8(300)
+  36 001c 91E0      		ldi r25,hi8(300)
+  37               	/* #APP */
+  38               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+  39 001e 0197      		1: sbiw r24,1
+  40 0020 01F4      		brne 1b
+  41               	 ;  0 "" 2
+  42               	/* #NOAPP */
+  43 0022 80B3      		in r24,48-32
+  44 0024 E5E0      		ldi r30,lo8(1541)
+  45 0026 F6E0      		ldi r31,hi8(1541)
+  46               	/* #APP */
+  47               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+  48 0028 3197      		1: sbiw r30,1
+  49 002a 01F4      		brne 1b
+  50               	 ;  0 "" 2
+  51               	/* #NOAPP */
+  52 002c 8799      		sbic 48-32,7
+  53 002e 00C0      		rjmp .L2
+  54 0030 80E0      		ldi r24,lo8(0)
+  55 0032 0895      		ret
+  56               	.L2:
+  57 0034 8095      		com r24
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cc7LJIv3.s 			page 2
+
+
+  58 0036 881F      		rol r24
+  59 0038 8827      		clr r24
+  60 003a 881F      		rol r24
+  61 003c 0895      		ret
+  62               		.size	ds_reset, .-ds_reset
+  63               		.section	.text.ds_shout,"ax",@progbits
+  64               	.global	ds_shout
+  65               		.type	ds_shout, @function
+  66               	ds_shout:
+  67               	/* prologue: function */
+  68               	/* frame size = 0 */
+  69 0000 20E0      		ldi r18,lo8(0)
+  70 0002 30E0      		ldi r19,hi8(0)
+  71 0004 EAE0      		ldi r30,lo8(10)
+  72 0006 482F      		mov r20,r24
+  73 0008 50E0      		ldi r21,lo8(0)
+  74 000a 67E2      		ldi r22,lo8(295)
+  75 000c 71E0      		ldi r23,hi8(295)
+  76               	.L8:
+  77 000e 8F9A      		sbi 49-32,7
+  78 0010 9798      		cbi 50-32,7
+  79 0012 8E2F      		mov r24,r30
+  80               	/* #APP */
+  81               	 ;  83 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+  82 0014 8A95      		1: dec r24
+  83 0016 01F4      		brne 1b
+  84               	 ;  0 "" 2
+  85               	/* #NOAPP */
+  86 0018 CA01      		movw r24,r20
+  87 001a 022E      		mov r0,r18
+  88 001c 00C0      		rjmp 2f
+  89 001e 9595      	1:	asr r25
+  90 0020 8795      		ror r24
+  91 0022 0A94      	2:	dec r0
+  92 0024 02F4      		brpl 1b
+  93 0026 80FD      		sbrc r24,0
+  94 0028 979A      		sbi 50-32,7
+  95               	.L7:
+  96 002a CB01      		movw r24,r22
+  97               	/* #APP */
+  98               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+  99 002c 0197      		1: sbiw r24,1
+ 100 002e 01F4      		brne 1b
+ 101               	 ;  0 "" 2
+ 102               	/* #NOAPP */
+ 103 0030 979A      		sbi 50-32,7
+ 104 0032 8E2F      		mov r24,r30
+ 105               	/* #APP */
+ 106               	 ;  83 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 107 0034 8A95      		1: dec r24
+ 108 0036 01F4      		brne 1b
+ 109               	 ;  0 "" 2
+ 110               	/* #NOAPP */
+ 111 0038 2F5F      		subi r18,lo8(-(1))
+ 112 003a 3F4F      		sbci r19,hi8(-(1))
+ 113 003c 2830      		cpi r18,8
+ 114 003e 3105      		cpc r19,__zero_reg__
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cc7LJIv3.s 			page 3
+
+
+ 115 0040 01F4      		brne .L8
+ 116               	/* epilogue start */
+ 117 0042 0895      		ret
+ 118               		.size	ds_shout, .-ds_shout
+ 119               		.section	.text.ds_shin,"ax",@progbits
+ 120               	.global	ds_shin
+ 121               		.type	ds_shin, @function
+ 122               	ds_shin:
+ 123               	/* prologue: function */
+ 124               	/* frame size = 0 */
+ 125 0000 20E0      		ldi r18,lo8(0)
+ 126 0002 80E0      		ldi r24,lo8(0)
+ 127 0004 3FE0      		ldi r19,lo8(15)
+ 128 0006 49EB      		ldi r20,lo8(185)
+ 129 0008 50E0      		ldi r21,hi8(185)
+ 130               	.L13:
+ 131 000a 8F9A      		sbi 49-32,7
+ 132 000c 9798      		cbi 50-32,7
+ 133 000e 932F      		mov r25,r19
+ 134               	/* #APP */
+ 135               	 ;  83 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 136 0010 9A95      		1: dec r25
+ 137 0012 01F4      		brne 1b
+ 138               	 ;  0 "" 2
+ 139               	/* #NOAPP */
+ 140 0014 8F98      		cbi 49-32,7
+ 141 0016 979A      		sbi 50-32,7
+ 142 0018 932F      		mov r25,r19
+ 143               	/* #APP */
+ 144               	 ;  83 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 145 001a 9A95      		1: dec r25
+ 146 001c 01F4      		brne 1b
+ 147               	 ;  0 "" 2
+ 148               	/* #NOAPP */
+ 149 001e 8695      		lsr r24
+ 150 0020 8799      		sbic 48-32,7
+ 151 0022 8068      		ori r24,lo8(-128)
+ 152               	.L12:
+ 153 0024 FA01      		movw r30,r20
+ 154               	/* #APP */
+ 155               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 156 0026 3197      		1: sbiw r30,1
+ 157 0028 01F4      		brne 1b
+ 158               	 ;  0 "" 2
+ 159               	/* #NOAPP */
+ 160 002a 2F5F      		subi r18,lo8(-(1))
+ 161 002c 2830      		cpi r18,lo8(8)
+ 162 002e 01F4      		brne .L13
+ 163               	/* epilogue start */
+ 164 0030 0895      		ret
+ 165               		.size	ds_shin, .-ds_shin
+ 166               		.section	.text.ds_read_rom_command,"ax",@progbits
+ 167               	.global	ds_read_rom_command
+ 168               		.type	ds_read_rom_command, @function
+ 169               	ds_read_rom_command:
+ 170 0000 0F93      		push r16
+ 171 0002 1F93      		push r17
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cc7LJIv3.s 			page 4
+
+
+ 172 0004 CF93      		push r28
+ 173 0006 DF93      		push r29
+ 174               	/* prologue: function */
+ 175               	/* frame size = 0 */
+ 176 0008 8C01      		movw r16,r24
+ 177 000a 0E94 0000 		call ds_reset
+ 178 000e 83E3      		ldi r24,lo8(51)
+ 179 0010 0E94 0000 		call ds_shout
+ 180 0014 C0E0      		ldi r28,lo8(0)
+ 181 0016 D0E0      		ldi r29,hi8(0)
+ 182               	.L17:
+ 183 0018 0E94 0000 		call ds_shin
+ 184 001c F801      		movw r30,r16
+ 185 001e EC0F      		add r30,r28
+ 186 0020 FD1F      		adc r31,r29
+ 187 0022 8083      		st Z,r24
+ 188 0024 2196      		adiw r28,1
+ 189 0026 C830      		cpi r28,8
+ 190 0028 D105      		cpc r29,__zero_reg__
+ 191 002a 01F4      		brne .L17
+ 192               	/* epilogue start */
+ 193 002c DF91      		pop r29
+ 194 002e CF91      		pop r28
+ 195 0030 1F91      		pop r17
+ 196 0032 0F91      		pop r16
+ 197 0034 0895      		ret
+ 198               		.size	ds_read_rom_command, .-ds_read_rom_command
+ 199               		.section	.text.ds_convert_temperature_command,"ax",@progbits
+ 200               	.global	ds_convert_temperature_command
+ 201               		.type	ds_convert_temperature_command, @function
+ 202               	ds_convert_temperature_command:
+ 203               	/* prologue: function */
+ 204               	/* frame size = 0 */
+ 205 0000 0E94 0000 		call ds_reset
+ 206 0004 8CEC      		ldi r24,lo8(-52)
+ 207 0006 0E94 0000 		call ds_shout
+ 208 000a 84E4      		ldi r24,lo8(68)
+ 209 000c 0E94 0000 		call ds_shout
+ 210               	/* epilogue start */
+ 211 0010 0895      		ret
+ 212               		.size	ds_convert_temperature_command, .-ds_convert_temperature_command
+ 213               		.section	.text.ds_read_temperature_command,"ax",@progbits
+ 214               	.global	ds_read_temperature_command
+ 215               		.type	ds_read_temperature_command, @function
+ 216               	ds_read_temperature_command:
+ 217 0000 8F92      		push r8
+ 218 0002 9F92      		push r9
+ 219 0004 AF92      		push r10
+ 220 0006 BF92      		push r11
+ 221 0008 CF92      		push r12
+ 222 000a DF92      		push r13
+ 223 000c EF92      		push r14
+ 224 000e FF92      		push r15
+ 225 0010 0F93      		push r16
+ 226 0012 1F93      		push r17
+ 227 0014 DF93      		push r29
+ 228 0016 CF93      		push r28
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cc7LJIv3.s 			page 5
+
+
+ 229 0018 CDB7      		in r28,__SP_L__
+ 230 001a DEB7      		in r29,__SP_H__
+ 231 001c 2997      		sbiw r28,9
+ 232 001e 0FB6      		in __tmp_reg__,__SREG__
+ 233 0020 F894      		cli
+ 234 0022 DEBF      		out __SP_H__,r29
+ 235 0024 0FBE      		out __SREG__,__tmp_reg__
+ 236 0026 CDBF      		out __SP_L__,r28
+ 237               	/* prologue: function */
+ 238               	/* frame size = 9 */
+ 239 0028 6C01      		movw r12,r24
+ 240 002a 4B01      		movw r8,r22
+ 241 002c 5A01      		movw r10,r20
+ 242 002e 0E94 0000 		call ds_reset
+ 243 0032 8CEC      		ldi r24,lo8(-52)
+ 244 0034 0E94 0000 		call ds_shout
+ 245 0038 8EEB      		ldi r24,lo8(-66)
+ 246 003a 0E94 0000 		call ds_shout
+ 247 003e 8E01      		movw r16,r28
+ 248 0040 0F5F      		subi r16,lo8(-(1))
+ 249 0042 1F4F      		sbci r17,hi8(-(1))
+ 250 0044 7AE0      		ldi r23,lo8(10)
+ 251 0046 E72E      		mov r14,r23
+ 252 0048 F12C      		mov r15,__zero_reg__
+ 253 004a EC0E      		add r14,r28
+ 254 004c FD1E      		adc r15,r29
+ 255               	.L23:
+ 256 004e 0E94 0000 		call ds_shin
+ 257 0052 F801      		movw r30,r16
+ 258 0054 8193      		st Z+,r24
+ 259 0056 8F01      		movw r16,r30
+ 260 0058 EE15      		cp r30,r14
+ 261 005a FF05      		cpc r31,r15
+ 262 005c 01F4      		brne .L23
+ 263 005e 8A81      		ldd r24,Y+2
+ 264 0060 482F      		mov r20,r24
+ 265 0062 50E0      		ldi r21,lo8(0)
+ 266 0064 CA01      		movw r24,r20
+ 267 0066 887F      		andi r24,lo8(248)
+ 268 0068 9070      		andi r25,hi8(248)
+ 269 006a 883F      		cpi r24,248
+ 270 006c 9105      		cpc r25,__zero_reg__
+ 271 006e 01F4      		brne .L24
+ 272 0070 81E0      		ldi r24,lo8(1)
+ 273 0072 F601      		movw r30,r12
+ 274 0074 8083      		st Z,r24
+ 275 0076 00C0      		rjmp .L25
+ 276               	.L24:
+ 277 0078 F601      		movw r30,r12
+ 278 007a 1082      		st Z,__zero_reg__
+ 279               	.L25:
+ 280 007c 2981      		ldd r18,Y+1
+ 281 007e 30E0      		ldi r19,lo8(0)
+ 282 0080 4770      		andi r20,lo8(7)
+ 283 0082 5070      		andi r21,hi8(7)
+ 284 0084 942F      		mov r25,r20
+ 285 0086 8827      		clr r24
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cc7LJIv3.s 			page 6
+
+
+ 286 0088 820F      		add r24,r18
+ 287 008a 931F      		adc r25,r19
+ 288 008c 34E0      		ldi r19,4
+ 289 008e 9595      	1:	asr r25
+ 290 0090 8795      		ror r24
+ 291 0092 3A95      		dec r19
+ 292 0094 01F4      		brne 1b
+ 293 0096 F401      		movw r30,r8
+ 294 0098 8083      		st Z,r24
+ 295 009a 23FF      		sbrs r18,3
+ 296 009c 00C0      		rjmp .L26
+ 297 009e 81E0      		ldi r24,lo8(1)
+ 298 00a0 F501      		movw r30,r10
+ 299 00a2 8083      		st Z,r24
+ 300 00a4 00C0      		rjmp .L28
+ 301               	.L26:
+ 302 00a6 F501      		movw r30,r10
+ 303 00a8 1082      		st Z,__zero_reg__
+ 304               	.L28:
+ 305               	/* epilogue start */
+ 306 00aa 2996      		adiw r28,9
+ 307 00ac 0FB6      		in __tmp_reg__,__SREG__
+ 308 00ae F894      		cli
+ 309 00b0 DEBF      		out __SP_H__,r29
+ 310 00b2 0FBE      		out __SREG__,__tmp_reg__
+ 311 00b4 CDBF      		out __SP_L__,r28
+ 312 00b6 CF91      		pop r28
+ 313 00b8 DF91      		pop r29
+ 314 00ba 1F91      		pop r17
+ 315 00bc 0F91      		pop r16
+ 316 00be FF90      		pop r15
+ 317 00c0 EF90      		pop r14
+ 318 00c2 DF90      		pop r13
+ 319 00c4 CF90      		pop r12
+ 320 00c6 BF90      		pop r11
+ 321 00c8 AF90      		pop r10
+ 322 00ca 9F90      		pop r9
+ 323 00cc 8F90      		pop r8
+ 324 00ce 0895      		ret
+ 325               		.size	ds_read_temperature_command, .-ds_read_temperature_command
+ 326               		.section	.text.ds_set_resolution,"ax",@progbits
+ 327               	.global	ds_set_resolution
+ 328               		.type	ds_set_resolution, @function
+ 329               	ds_set_resolution:
+ 330 0000 0F93      		push r16
+ 331 0002 1F93      		push r17
+ 332               	/* prologue: function */
+ 333               	/* frame size = 0 */
+ 334 0004 8C01      		movw r16,r24
+ 335 0006 0E94 0000 		call ds_reset
+ 336 000a 8CEC      		ldi r24,lo8(-52)
+ 337 000c 0E94 0000 		call ds_shout
+ 338 0010 8EE4      		ldi r24,lo8(78)
+ 339 0012 0E94 0000 		call ds_shout
+ 340 0016 F801      		movw r30,r16
+ 341 0018 8081      		ld r24,Z
+ 342 001a 0E94 0000 		call ds_shout
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cc7LJIv3.s 			page 7
+
+
+ 343 001e F801      		movw r30,r16
+ 344 0020 8181      		ldd r24,Z+1
+ 345 0022 0E94 0000 		call ds_shout
+ 346 0026 F801      		movw r30,r16
+ 347 0028 8281      		ldd r24,Z+2
+ 348 002a 0E94 0000 		call ds_shout
+ 349               	/* epilogue start */
+ 350 002e 1F91      		pop r17
+ 351 0030 0F91      		pop r16
+ 352 0032 0895      		ret
+ 353               		.size	ds_set_resolution, .-ds_set_resolution
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cc7LJIv3.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 dallas.c
+C:\Users\hag\AppData\Local\Temp/cc7LJIv3.s:2      *ABS*:0000003f __SREG__
+C:\Users\hag\AppData\Local\Temp/cc7LJIv3.s:3      *ABS*:0000003e __SP_H__
+C:\Users\hag\AppData\Local\Temp/cc7LJIv3.s:4      *ABS*:0000003d __SP_L__
+C:\Users\hag\AppData\Local\Temp/cc7LJIv3.s:5      *ABS*:00000034 __CCP__
+C:\Users\hag\AppData\Local\Temp/cc7LJIv3.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\hag\AppData\Local\Temp/cc7LJIv3.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\hag\AppData\Local\Temp/cc7LJIv3.s:11     .text.ds_reset:00000000 ds_reset
+C:\Users\hag\AppData\Local\Temp/cc7LJIv3.s:66     .text.ds_shout:00000000 ds_shout
+C:\Users\hag\AppData\Local\Temp/cc7LJIv3.s:122    .text.ds_shin:00000000 ds_shin
+C:\Users\hag\AppData\Local\Temp/cc7LJIv3.s:169    .text.ds_read_rom_command:00000000 ds_read_rom_command
+C:\Users\hag\AppData\Local\Temp/cc7LJIv3.s:202    .text.ds_convert_temperature_command:00000000 ds_convert_temperature_command
+C:\Users\hag\AppData\Local\Temp/cc7LJIv3.s:216    .text.ds_read_temperature_command:00000000 ds_read_temperature_command
+C:\Users\hag\AppData\Local\Temp/cc7LJIv3.s:329    .text.ds_set_resolution:00000000 ds_set_resolution
+
+NO UNDEFINED SYMBOLS

@@ -1,0 +1,1553 @@
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s 			page 1
+
+
+   1               		.file	"text_lcd_MAK101_Rus.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.section	.text.display_set_channel,"ax",@progbits
+   9               	.global	display_set_channel
+  10               		.type	display_set_channel, @function
+  11               	display_set_channel:
+  12               	/* prologue: function */
+  13               	/* frame size = 0 */
+  14               	/* epilogue start */
+  15 0000 0895      		ret
+  16               		.size	display_set_channel, .-display_set_channel
+  17               		.section	.text.display_write_byte,"ax",@progbits
+  18               	.global	display_write_byte
+  19               		.type	display_write_byte, @function
+  20               	display_write_byte:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23 0000 982F      		mov r25,r24
+  24 0002 6130      		cpi r22,lo8(1)
+  25 0004 01F4      		brne .L4
+  26 0006 8091 6200 		lds r24,98
+  27 000a 8160      		ori r24,lo8(1)
+  28 000c 00C0      		rjmp .L15
+  29               	.L4:
+  30 000e 8091 6200 		lds r24,98
+  31 0012 8E7F      		andi r24,lo8(-2)
+  32               	.L15:
+  33 0014 8093 6200 		sts 98,r24
+  34 0018 8091 6200 		lds r24,98
+  35 001c 8F7E      		andi r24,lo8(-17)
+  36 001e 8093 6200 		sts 98,r24
+  37               	/* #APP */
+  38               	 ;  337 "text_lcd_MAK101_Rus.c" 1
+  39 0022 0000      		nop
+  40               	 ;  0 "" 2
+  41               	/* #NOAPP */
+  42 0024 8091 6200 		lds r24,98
+  43 0028 8260      		ori r24,lo8(2)
+  44 002a 8093 6200 		sts 98,r24
+  45 002e 8091 6200 		lds r24,98
+  46 0032 877F      		andi r24,lo8(-9)
+  47 0034 8093 6200 		sts 98,r24
+  48 0038 8091 6200 		lds r24,98
+  49 003c 8F7B      		andi r24,lo8(-65)
+  50 003e 8093 6200 		sts 98,r24
+  51 0042 8091 6200 		lds r24,98
+  52 0046 8B7F      		andi r24,lo8(-5)
+  53 0048 8093 6200 		sts 98,r24
+  54 004c 8091 6200 		lds r24,98
+  55 0050 8F7D      		andi r24,lo8(-33)
+  56 0052 8093 6200 		sts 98,r24
+  57 0056 97FF      		sbrs r25,7
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s 			page 2
+
+
+  58 0058 00C0      		rjmp .L6
+  59 005a 8091 6200 		lds r24,98
+  60 005e 8860      		ori r24,lo8(8)
+  61 0060 8093 6200 		sts 98,r24
+  62               	.L6:
+  63 0064 292F      		mov r18,r25
+  64 0066 96FF      		sbrs r25,6
+  65 0068 00C0      		rjmp .L7
+  66 006a 8091 6200 		lds r24,98
+  67 006e 8064      		ori r24,lo8(64)
+  68 0070 8093 6200 		sts 98,r24
+  69               	.L7:
+  70 0074 25FF      		sbrs r18,5
+  71 0076 00C0      		rjmp .L8
+  72 0078 8091 6200 		lds r24,98
+  73 007c 8460      		ori r24,lo8(4)
+  74 007e 8093 6200 		sts 98,r24
+  75               	.L8:
+  76 0082 24FF      		sbrs r18,4
+  77 0084 00C0      		rjmp .L9
+  78 0086 8091 6200 		lds r24,98
+  79 008a 8062      		ori r24,lo8(32)
+  80 008c 8093 6200 		sts 98,r24
+  81               	.L9:
+  82 0090 81E0      		ldi r24,lo8(1)
+  83 0092 90E0      		ldi r25,hi8(1)
+  84               	/* #APP */
+  85               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+  86 0094 0197      		1: sbiw r24,1
+  87 0096 01F4      		brne 1b
+  88               	 ;  0 "" 2
+  89               	/* #NOAPP */
+  90 0098 8091 6200 		lds r24,98
+  91 009c 8D7F      		andi r24,lo8(-3)
+  92 009e 8093 6200 		sts 98,r24
+  93 00a2 83E9      		ldi r24,lo8(147)
+  94 00a4 90E0      		ldi r25,hi8(147)
+  95               	/* #APP */
+  96               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+  97 00a6 0197      		1: sbiw r24,1
+  98 00a8 01F4      		brne 1b
+  99               	 ;  0 "" 2
+ 100               	/* #NOAPP */
+ 101 00aa 8091 6200 		lds r24,98
+ 102 00ae 8260      		ori r24,lo8(2)
+ 103 00b0 8093 6200 		sts 98,r24
+ 104 00b4 8091 6200 		lds r24,98
+ 105 00b8 877F      		andi r24,lo8(-9)
+ 106 00ba 8093 6200 		sts 98,r24
+ 107 00be 8091 6200 		lds r24,98
+ 108 00c2 8F7B      		andi r24,lo8(-65)
+ 109 00c4 8093 6200 		sts 98,r24
+ 110 00c8 8091 6200 		lds r24,98
+ 111 00cc 8B7F      		andi r24,lo8(-5)
+ 112 00ce 8093 6200 		sts 98,r24
+ 113 00d2 8091 6200 		lds r24,98
+ 114 00d6 8F7D      		andi r24,lo8(-33)
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s 			page 3
+
+
+ 115 00d8 8093 6200 		sts 98,r24
+ 116 00dc 23FF      		sbrs r18,3
+ 117 00de 00C0      		rjmp .L10
+ 118 00e0 8091 6200 		lds r24,98
+ 119 00e4 8860      		ori r24,lo8(8)
+ 120 00e6 8093 6200 		sts 98,r24
+ 121               	.L10:
+ 122 00ea 22FF      		sbrs r18,2
+ 123 00ec 00C0      		rjmp .L11
+ 124 00ee 8091 6200 		lds r24,98
+ 125 00f2 8064      		ori r24,lo8(64)
+ 126 00f4 8093 6200 		sts 98,r24
+ 127               	.L11:
+ 128 00f8 21FF      		sbrs r18,1
+ 129 00fa 00C0      		rjmp .L12
+ 130 00fc 8091 6200 		lds r24,98
+ 131 0100 8460      		ori r24,lo8(4)
+ 132 0102 8093 6200 		sts 98,r24
+ 133               	.L12:
+ 134 0106 20FF      		sbrs r18,0
+ 135 0108 00C0      		rjmp .L13
+ 136 010a 8091 6200 		lds r24,98
+ 137 010e 8062      		ori r24,lo8(32)
+ 138 0110 8093 6200 		sts 98,r24
+ 139               	.L13:
+ 140 0114 81E0      		ldi r24,lo8(1)
+ 141 0116 90E0      		ldi r25,hi8(1)
+ 142               	/* #APP */
+ 143               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 144 0118 0197      		1: sbiw r24,1
+ 145 011a 01F4      		brne 1b
+ 146               	 ;  0 "" 2
+ 147               	/* #NOAPP */
+ 148 011c 8091 6200 		lds r24,98
+ 149 0120 8D7F      		andi r24,lo8(-3)
+ 150 0122 8093 6200 		sts 98,r24
+ 151 0126 83E9      		ldi r24,lo8(147)
+ 152 0128 90E0      		ldi r25,hi8(147)
+ 153               	/* #APP */
+ 154               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 155 012a 0197      		1: sbiw r24,1
+ 156 012c 01F4      		brne 1b
+ 157               	 ;  0 "" 2
+ 158               	/* epilogue start */
+ 159               	/* #NOAPP */
+ 160 012e 0895      		ret
+ 161               		.size	display_write_byte, .-display_write_byte
+ 162               		.section	.text.display_set_cursor_pos,"ax",@progbits
+ 163               	.global	display_set_cursor_pos
+ 164               		.type	display_set_cursor_pos, @function
+ 165               	display_set_cursor_pos:
+ 166               	/* prologue: function */
+ 167               	/* frame size = 0 */
+ 168 0000 8F70      		andi r24,lo8(15)
+ 169 0002 8068      		ori r24,lo8(-128)
+ 170 0004 70E0      		ldi r23,lo8(0)
+ 171 0006 6170      		andi r22,lo8(1)
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s 			page 4
+
+
+ 172 0008 7070      		andi r23,hi8(1)
+ 173 000a 96E0      		ldi r25,6
+ 174 000c 660F      	1:	lsl r22
+ 175 000e 771F      		rol r23
+ 176 0010 9A95      		dec r25
+ 177 0012 01F4      		brne 1b
+ 178 0014 862B      		or r24,r22
+ 179 0016 60E0      		ldi r22,lo8(0)
+ 180 0018 0E94 0000 		call display_write_byte
+ 181               	/* epilogue start */
+ 182 001c 0895      		ret
+ 183               		.size	display_set_cursor_pos, .-display_set_cursor_pos
+ 184               		.section	.text.display_hide_cursor,"ax",@progbits
+ 185               	.global	display_hide_cursor
+ 186               		.type	display_hide_cursor, @function
+ 187               	display_hide_cursor:
+ 188               	/* prologue: function */
+ 189               	/* frame size = 0 */
+ 190 0000 8CE0      		ldi r24,lo8(12)
+ 191 0002 60E0      		ldi r22,lo8(0)
+ 192 0004 0E94 0000 		call display_write_byte
+ 193               	/* epilogue start */
+ 194 0008 0895      		ret
+ 195               		.size	display_hide_cursor, .-display_hide_cursor
+ 196               		.section	.text.display_show_cursor,"ax",@progbits
+ 197               	.global	display_show_cursor
+ 198               		.type	display_show_cursor, @function
+ 199               	display_show_cursor:
+ 200               	/* prologue: function */
+ 201               	/* frame size = 0 */
+ 202 0000 8EE0      		ldi r24,lo8(14)
+ 203 0002 60E0      		ldi r22,lo8(0)
+ 204 0004 0E94 0000 		call display_write_byte
+ 205               	/* epilogue start */
+ 206 0008 0895      		ret
+ 207               		.size	display_show_cursor, .-display_show_cursor
+ 208               		.section	.text.display_clear_screen,"ax",@progbits
+ 209               	.global	display_clear_screen
+ 210               		.type	display_clear_screen, @function
+ 211               	display_clear_screen:
+ 212               	/* prologue: function */
+ 213               	/* frame size = 0 */
+ 214 0000 81E0      		ldi r24,lo8(1)
+ 215 0002 60E0      		ldi r22,lo8(0)
+ 216 0004 0E94 0000 		call display_write_byte
+ 217               	/* epilogue start */
+ 218 0008 0895      		ret
+ 219               		.size	display_clear_screen, .-display_clear_screen
+ 220               		.section	.text.display_set_font2,"ax",@progbits
+ 221               	.global	display_set_font2
+ 222               		.type	display_set_font2, @function
+ 223               	display_set_font2:
+ 224 0000 CF93      		push r28
+ 225 0002 DF93      		push r29
+ 226               	/* prologue: function */
+ 227               	/* frame size = 0 */
+ 228 0004 80E4      		ldi r24,lo8(64)
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s 			page 5
+
+
+ 229 0006 60E0      		ldi r22,lo8(0)
+ 230 0008 0E94 0000 		call display_write_byte
+ 231 000c C0E0      		ldi r28,lo8(font2)
+ 232 000e D0E0      		ldi r29,hi8(font2)
+ 233               	.L25:
+ 234 0010 8991      		ld r24,Y+
+ 235 0012 61E0      		ldi r22,lo8(1)
+ 236 0014 0E94 0000 		call display_write_byte
+ 237 0018 80E0      		ldi r24,hi8(font2+64)
+ 238 001a C030      		cpi r28,lo8(font2+64)
+ 239 001c D807      		cpc r29,r24
+ 240 001e 01F4      		brne .L25
+ 241 0020 82E0      		ldi r24,lo8(2)
+ 242 0022 8093 0000 		sts current_font,r24
+ 243               	/* epilogue start */
+ 244 0026 DF91      		pop r29
+ 245 0028 CF91      		pop r28
+ 246 002a 0895      		ret
+ 247               		.size	display_set_font2, .-display_set_font2
+ 248               		.section	.text.display_set_font,"ax",@progbits
+ 249               	.global	display_set_font
+ 250               		.type	display_set_font, @function
+ 251               	display_set_font:
+ 252 0000 CF93      		push r28
+ 253 0002 DF93      		push r29
+ 254               	/* prologue: function */
+ 255               	/* frame size = 0 */
+ 256 0004 80E4      		ldi r24,lo8(64)
+ 257 0006 60E0      		ldi r22,lo8(0)
+ 258 0008 0E94 0000 		call display_write_byte
+ 259 000c C0E0      		ldi r28,lo8(font)
+ 260 000e D0E0      		ldi r29,hi8(font)
+ 261               	.L29:
+ 262 0010 8991      		ld r24,Y+
+ 263 0012 61E0      		ldi r22,lo8(1)
+ 264 0014 0E94 0000 		call display_write_byte
+ 265 0018 80E0      		ldi r24,hi8(font+64)
+ 266 001a C030      		cpi r28,lo8(font+64)
+ 267 001c D807      		cpc r29,r24
+ 268 001e 01F4      		brne .L29
+ 269 0020 81E0      		ldi r24,lo8(1)
+ 270 0022 8093 0000 		sts current_font,r24
+ 271               	/* epilogue start */
+ 272 0026 DF91      		pop r29
+ 273 0028 CF91      		pop r28
+ 274 002a 0895      		ret
+ 275               		.size	display_set_font, .-display_set_font
+ 276               		.section	.text.display_init,"ax",@progbits
+ 277               	.global	display_init
+ 278               		.type	display_init, @function
+ 279               	display_init:
+ 280               	/* prologue: function */
+ 281               	/* frame size = 0 */
+ 282 0000 E1E6      		ldi r30,lo8(97)
+ 283 0002 F0E0      		ldi r31,hi8(97)
+ 284 0004 8081      		ld r24,Z
+ 285 0006 8F67      		ori r24,lo8(127)
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s 			page 6
+
+
+ 286 0008 8083      		st Z,r24
+ 287 000a E2E6      		ldi r30,lo8(98)
+ 288 000c F0E0      		ldi r31,hi8(98)
+ 289 000e 8081      		ld r24,Z
+ 290 0010 8E7F      		andi r24,lo8(-2)
+ 291 0012 8083      		st Z,r24
+ 292 0014 8081      		ld r24,Z
+ 293 0016 8F7E      		andi r24,lo8(-17)
+ 294 0018 8083      		st Z,r24
+ 295 001a 8EEF      		ldi r24,lo8(-10242)
+ 296 001c 97ED      		ldi r25,hi8(-10242)
+ 297               	/* #APP */
+ 298               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 299 001e 0197      		1: sbiw r24,1
+ 300 0020 01F4      		brne 1b
+ 301               	 ;  0 "" 2
+ 302               	/* #NOAPP */
+ 303 0022 8081      		ld r24,Z
+ 304 0024 8260      		ori r24,lo8(2)
+ 305 0026 8083      		st Z,r24
+ 306 0028 8081      		ld r24,Z
+ 307 002a 8062      		ori r24,lo8(32)
+ 308 002c 8083      		st Z,r24
+ 309 002e 8081      		ld r24,Z
+ 310 0030 8460      		ori r24,lo8(4)
+ 311 0032 8083      		st Z,r24
+ 312 0034 8081      		ld r24,Z
+ 313 0036 8F7B      		andi r24,lo8(-65)
+ 314 0038 8083      		st Z,r24
+ 315 003a 8081      		ld r24,Z
+ 316 003c 877F      		andi r24,lo8(-9)
+ 317 003e 8083      		st Z,r24
+ 318 0040 21E0      		ldi r18,lo8(1)
+ 319 0042 30E0      		ldi r19,hi8(1)
+ 320 0044 C901      		movw r24,r18
+ 321               	/* #APP */
+ 322               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 323 0046 0197      		1: sbiw r24,1
+ 324 0048 01F4      		brne 1b
+ 325               	 ;  0 "" 2
+ 326               	/* #NOAPP */
+ 327 004a 8081      		ld r24,Z
+ 328 004c 8D7F      		andi r24,lo8(-3)
+ 329 004e 8083      		st Z,r24
+ 330 0050 8AE0      		ldi r24,lo8(15114)
+ 331 0052 9BE3      		ldi r25,hi8(15114)
+ 332               	/* #APP */
+ 333               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 334 0054 0197      		1: sbiw r24,1
+ 335 0056 01F4      		brne 1b
+ 336               	 ;  0 "" 2
+ 337               	/* #NOAPP */
+ 338 0058 8081      		ld r24,Z
+ 339 005a 8260      		ori r24,lo8(2)
+ 340 005c 8083      		st Z,r24
+ 341 005e C901      		movw r24,r18
+ 342               	/* #APP */
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s 			page 7
+
+
+ 343               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 344 0060 0197      		1: sbiw r24,1
+ 345 0062 01F4      		brne 1b
+ 346               	 ;  0 "" 2
+ 347               	/* #NOAPP */
+ 348 0064 8081      		ld r24,Z
+ 349 0066 8D7F      		andi r24,lo8(-3)
+ 350 0068 8083      		st Z,r24
+ 351 006a 81E7      		ldi r24,lo8(369)
+ 352 006c 91E0      		ldi r25,hi8(369)
+ 353               	/* #APP */
+ 354               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 355 006e 0197      		1: sbiw r24,1
+ 356 0070 01F4      		brne 1b
+ 357               	 ;  0 "" 2
+ 358               	/* #NOAPP */
+ 359 0072 8081      		ld r24,Z
+ 360 0074 8260      		ori r24,lo8(2)
+ 361 0076 8083      		st Z,r24
+ 362 0078 C901      		movw r24,r18
+ 363               	/* #APP */
+ 364               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 365 007a 0197      		1: sbiw r24,1
+ 366 007c 01F4      		brne 1b
+ 367               	 ;  0 "" 2
+ 368               	/* #NOAPP */
+ 369 007e 8081      		ld r24,Z
+ 370 0080 8D7F      		andi r24,lo8(-3)
+ 371 0082 8083      		st Z,r24
+ 372 0084 43E9      		ldi r20,lo8(147)
+ 373 0086 50E0      		ldi r21,hi8(147)
+ 374 0088 CA01      		movw r24,r20
+ 375               	/* #APP */
+ 376               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 377 008a 0197      		1: sbiw r24,1
+ 378 008c 01F4      		brne 1b
+ 379               	 ;  0 "" 2
+ 380               	/* #NOAPP */
+ 381 008e 8081      		ld r24,Z
+ 382 0090 8260      		ori r24,lo8(2)
+ 383 0092 8083      		st Z,r24
+ 384 0094 8081      		ld r24,Z
+ 385 0096 8F7D      		andi r24,lo8(-33)
+ 386 0098 8083      		st Z,r24
+ 387 009a C901      		movw r24,r18
+ 388               	/* #APP */
+ 389               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 390 009c 0197      		1: sbiw r24,1
+ 391 009e 01F4      		brne 1b
+ 392               	 ;  0 "" 2
+ 393               	/* #NOAPP */
+ 394 00a0 8081      		ld r24,Z
+ 395 00a2 8D7F      		andi r24,lo8(-3)
+ 396 00a4 8083      		st Z,r24
+ 397 00a6 CA01      		movw r24,r20
+ 398               	/* #APP */
+ 399               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s 			page 8
+
+
+ 400 00a8 0197      		1: sbiw r24,1
+ 401 00aa 01F4      		brne 1b
+ 402               	 ;  0 "" 2
+ 403               	/* #NOAPP */
+ 404 00ac 88E2      		ldi r24,lo8(40)
+ 405 00ae 60E0      		ldi r22,lo8(0)
+ 406 00b0 0E94 0000 		call display_write_byte
+ 407 00b4 8CE0      		ldi r24,lo8(12)
+ 408 00b6 60E0      		ldi r22,lo8(0)
+ 409 00b8 0E94 0000 		call display_write_byte
+ 410 00bc 86E0      		ldi r24,lo8(6)
+ 411 00be 60E0      		ldi r22,lo8(0)
+ 412 00c0 0E94 0000 		call display_write_byte
+ 413               	/* epilogue start */
+ 414 00c4 0895      		ret
+ 415               		.size	display_init, .-display_init
+ 416               		.section	.text.display_show_string,"ax",@progbits
+ 417               	.global	display_show_string
+ 418               		.type	display_show_string, @function
+ 419               	display_show_string:
+ 420 0000 CF93      		push r28
+ 421 0002 DF93      		push r29
+ 422               	/* prologue: function */
+ 423               	/* frame size = 0 */
+ 424 0004 EA01      		movw r28,r20
+ 425 0006 0E94 0000 		call display_set_cursor_pos
+ 426 000a 00C0      		rjmp .L35
+ 427               	.L36:
+ 428 000c 61E0      		ldi r22,lo8(1)
+ 429 000e 0E94 0000 		call display_write_byte
+ 430 0012 2196      		adiw r28,1
+ 431               	.L35:
+ 432 0014 8881      		ld r24,Y
+ 433 0016 8823      		tst r24
+ 434 0018 01F4      		brne .L36
+ 435               	/* epilogue start */
+ 436 001a DF91      		pop r29
+ 437 001c CF91      		pop r28
+ 438 001e 0895      		ret
+ 439               		.size	display_show_string, .-display_show_string
+ 440               		.section	.text.display_can_write,"ax",@progbits
+ 441               	.global	display_can_write
+ 442               		.type	display_can_write, @function
+ 443               	display_can_write:
+ 444               	/* prologue: function */
+ 445               	/* frame size = 0 */
+ 446 0000 E1E6      		ldi r30,lo8(97)
+ 447 0002 F0E0      		ldi r31,hi8(97)
+ 448 0004 8081      		ld r24,Z
+ 449 0006 8C66      		ori r24,lo8(108)
+ 450 0008 8083      		st Z,r24
+ 451               	/* epilogue start */
+ 452 000a 0895      		ret
+ 453               		.size	display_can_write, .-display_can_write
+ 454               		.section	.text.display_can_read,"ax",@progbits
+ 455               	.global	display_can_read
+ 456               		.type	display_can_read, @function
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s 			page 9
+
+
+ 457               	display_can_read:
+ 458               	/* prologue: function */
+ 459               	/* frame size = 0 */
+ 460 0000 E1E6      		ldi r30,lo8(97)
+ 461 0002 F0E0      		ldi r31,hi8(97)
+ 462 0004 8081      		ld r24,Z
+ 463 0006 8379      		andi r24,lo8(-109)
+ 464 0008 8083      		st Z,r24
+ 465               	/* epilogue start */
+ 466 000a 0895      		ret
+ 467               		.size	display_can_read, .-display_can_read
+ 468               		.section	.text.display_wait_for_work,"ax",@progbits
+ 469               	.global	display_wait_for_work
+ 470               		.type	display_wait_for_work, @function
+ 471               	display_wait_for_work:
+ 472               	/* prologue: function */
+ 473               	/* frame size = 0 */
+ 474 0000 8091 6100 		lds r24,97
+ 475 0004 8379      		andi r24,lo8(-109)
+ 476 0006 8093 6100 		sts 97,r24
+ 477 000a 8091 6200 		lds r24,98
+ 478 000e 8E7F      		andi r24,lo8(-2)
+ 479 0010 8093 6200 		sts 98,r24
+ 480 0014 8091 6200 		lds r24,98
+ 481 0018 8061      		ori r24,lo8(16)
+ 482 001a 8093 6200 		sts 98,r24
+ 483               	/* #APP */
+ 484               	 ;  417 "text_lcd_MAK101_Rus.c" 1
+ 485 001e 0000      		nop
+ 486               	 ;  0 "" 2
+ 487               	/* #NOAPP */
+ 488 0020 21E0      		ldi r18,lo8(1)
+ 489 0022 30E0      		ldi r19,hi8(1)
+ 490               	.L43:
+ 491 0024 8091 6200 		lds r24,98
+ 492 0028 8260      		ori r24,lo8(2)
+ 493 002a 8093 6200 		sts 98,r24
+ 494 002e C901      		movw r24,r18
+ 495               	/* #APP */
+ 496               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 497 0030 0197      		1: sbiw r24,1
+ 498 0032 01F4      		brne 1b
+ 499               	 ;  0 "" 2
+ 500               	/* #NOAPP */
+ 501 0034 90B1      		in r25,32-32
+ 502 0036 8091 6200 		lds r24,98
+ 503 003a 8D7F      		andi r24,lo8(-3)
+ 504 003c 8093 6200 		sts 98,r24
+ 505 0040 F901      		movw r30,r18
+ 506               	/* #APP */
+ 507               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 508 0042 3197      		1: sbiw r30,1
+ 509 0044 01F4      		brne 1b
+ 510               	 ;  0 "" 2
+ 511               	/* #NOAPP */
+ 512 0046 8091 6200 		lds r24,98
+ 513 004a 8260      		ori r24,lo8(2)
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s 			page 10
+
+
+ 514 004c 8093 6200 		sts 98,r24
+ 515 0050 F901      		movw r30,r18
+ 516               	/* #APP */
+ 517               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 518 0052 3197      		1: sbiw r30,1
+ 519 0054 01F4      		brne 1b
+ 520               	 ;  0 "" 2
+ 521               	/* #NOAPP */
+ 522 0056 8091 6200 		lds r24,98
+ 523 005a 8D7F      		andi r24,lo8(-3)
+ 524 005c 8093 6200 		sts 98,r24
+ 525 0060 93FD      		sbrc r25,3
+ 526 0062 00C0      		rjmp .L43
+ 527 0064 8091 6100 		lds r24,97
+ 528 0068 8C66      		ori r24,lo8(108)
+ 529 006a 8093 6100 		sts 97,r24
+ 530               	/* epilogue start */
+ 531 006e 0895      		ret
+ 532               		.size	display_wait_for_work, .-display_wait_for_work
+ 533               		.data
+ 534               	.LC0:
+ 535 0000 2530 376C 		.string	"%07lu"
+ 535      7500 
+ 536               	.LC1:
+ 537 0006 2530 3375 		.string	"%03u"
+ 537      00
+ 538               		.section	.text.display_show,"ax",@progbits
+ 539               	.global	display_show
+ 540               		.type	display_show, @function
+ 541               	display_show:
+ 542 0000 2F92      		push r2
+ 543 0002 3F92      		push r3
+ 544 0004 4F92      		push r4
+ 545 0006 5F92      		push r5
+ 546 0008 6F92      		push r6
+ 547 000a 7F92      		push r7
+ 548 000c 8F92      		push r8
+ 549 000e 9F92      		push r9
+ 550 0010 AF92      		push r10
+ 551 0012 BF92      		push r11
+ 552 0014 DF92      		push r13
+ 553 0016 EF92      		push r14
+ 554 0018 FF92      		push r15
+ 555 001a 0F93      		push r16
+ 556 001c 1F93      		push r17
+ 557 001e DF93      		push r29
+ 558 0020 CF93      		push r28
+ 559 0022 CDB7      		in r28,__SP_L__
+ 560 0024 DEB7      		in r29,__SP_H__
+ 561 0026 2B97      		sbiw r28,11
+ 562 0028 0FB6      		in __tmp_reg__,__SREG__
+ 563 002a F894      		cli
+ 564 002c DEBF      		out __SP_H__,r29
+ 565 002e 0FBE      		out __SREG__,__tmp_reg__
+ 566 0030 CDBF      		out __SP_L__,r28
+ 567               	/* prologue: function */
+ 568               	/* frame size = 11 */
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s 			page 11
+
+
+ 569 0032 D82E      		mov r13,r24
+ 570 0034 2B01      		movw r4,r22
+ 571 0036 1A01      		movw r2,r20
+ 572 0038 3B87      		std Y+11,r19
+ 573 003a 2A87      		std Y+10,r18
+ 574 003c 3701      		movw r6,r14
+ 575 003e 4801      		movw r8,r16
+ 576 0040 8550      		subi r24,lo8(-(-5))
+ 577 0042 9091 0000 		lds r25,current_font
+ 578 0046 8430      		cpi r24,lo8(4)
+ 579 0048 00F4      		brsh .L47
+ 580 004a 9230      		cpi r25,lo8(2)
+ 581 004c 01F0      		breq .L48
+ 582 004e 0E94 0000 		call display_set_font2
+ 583 0052 00C0      		rjmp .L48
+ 584               	.L47:
+ 585 0054 9130      		cpi r25,lo8(1)
+ 586 0056 01F0      		breq .L48
+ 587 0058 0E94 0000 		call display_set_font
+ 588               	.L48:
+ 589 005c 0D2D      		mov r16,r13
+ 590 005e 10E0      		ldi r17,lo8(0)
+ 591 0060 35E0      		ldi r19,5
+ 592 0062 000F      	1:	lsl r16
+ 593 0064 111F      		rol r17
+ 594 0066 3A95      		dec r19
+ 595 0068 01F4      		brne 1b
+ 596 006a 0050      		subi r16,lo8(-(displays))
+ 597 006c 1040      		sbci r17,hi8(-(displays))
+ 598 006e 80E0      		ldi r24,lo8(0)
+ 599 0070 60E0      		ldi r22,lo8(0)
+ 600 0072 0E94 0000 		call display_set_cursor_pos
+ 601 0076 5801      		movw r10,r16
+ 602 0078 FF24      		clr r15
+ 603               	.L49:
+ 604 007a D501      		movw r26,r10
+ 605 007c 8D91      		ld r24,X+
+ 606 007e 5D01      		movw r10,r26
+ 607 0080 61E0      		ldi r22,lo8(1)
+ 608 0082 0E94 0000 		call display_write_byte
+ 609 0086 F394      		inc r15
+ 610 0088 B0E1      		ldi r27,lo8(16)
+ 611 008a FB16      		cp r15,r27
+ 612 008c 01F4      		brne .L49
+ 613 008e 20E1      		ldi r18,lo8(16)
+ 614 0090 E22E      		mov r14,r18
+ 615 0092 F12C      		mov r15,__zero_reg__
+ 616 0094 E00E      		add r14,r16
+ 617 0096 F11E      		adc r15,r17
+ 618 0098 80E0      		ldi r24,lo8(0)
+ 619 009a 61E0      		ldi r22,lo8(1)
+ 620 009c 0E94 0000 		call display_set_cursor_pos
+ 621               	.L50:
+ 622 00a0 F801      		movw r30,r16
+ 623 00a2 8089      		ldd r24,Z+16
+ 624 00a4 61E0      		ldi r22,lo8(1)
+ 625 00a6 0E94 0000 		call display_write_byte
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s 			page 12
+
+
+ 626 00aa 0F5F      		subi r16,lo8(-(1))
+ 627 00ac 1F4F      		sbci r17,hi8(-(1))
+ 628 00ae E016      		cp r14,r16
+ 629 00b0 F106      		cpc r15,r17
+ 630 00b2 01F4      		brne .L50
+ 631 00b4 F4E0      		ldi r31,lo8(4)
+ 632 00b6 DF16      		cp r13,r31
+ 633 00b8 01F4      		brne .+2
+ 634 00ba 00C0      		rjmp .L56
+ 635 00bc FD15      		cp r31,r13
+ 636 00be 00F0      		brlo .L61
+ 637 00c0 81E0      		ldi r24,lo8(1)
+ 638 00c2 D816      		cp r13,r24
+ 639 00c4 01F4      		brne .+2
+ 640 00c6 00C0      		rjmp .L60
+ 641 00c8 D816      		cp r13,r24
+ 642 00ca 00F4      		brsh .+2
+ 643 00cc 00C0      		rjmp .L60
+ 644 00ce 92E0      		ldi r25,lo8(2)
+ 645 00d0 D916      		cp r13,r25
+ 646 00d2 01F0      		breq .L54
+ 647 00d4 A3E0      		ldi r26,lo8(3)
+ 648 00d6 DA16      		cp r13,r26
+ 649 00d8 01F0      		breq .+2
+ 650 00da 00C0      		rjmp .L63
+ 651 00dc 00C0      		rjmp .L69
+ 652               	.L61:
+ 653 00de B8E0      		ldi r27,lo8(8)
+ 654 00e0 DB16      		cp r13,r27
+ 655 00e2 01F4      		brne .+2
+ 656 00e4 00C0      		rjmp .L60
+ 657 00e6 BD15      		cp r27,r13
+ 658 00e8 00F0      		brlo .L62
+ 659 00ea E5E0      		ldi r30,lo8(5)
+ 660 00ec DE16      		cp r13,r30
+ 661 00ee 01F0      		breq .+2
+ 662 00f0 00C0      		rjmp .L63
+ 663 00f2 00C0      		rjmp .L60
+ 664               	.L62:
+ 665 00f4 F9E0      		ldi r31,lo8(9)
+ 666 00f6 DF16      		cp r13,r31
+ 667 00f8 01F4      		brne .+2
+ 668 00fa 00C0      		rjmp .L59
+ 669 00fc 8BE0      		ldi r24,lo8(11)
+ 670 00fe D816      		cp r13,r24
+ 671 0100 01F0      		breq .+2
+ 672 0102 00C0      		rjmp .L63
+ 673 0104 00C0      		rjmp .L60
+ 674               	.L54:
+ 675 0106 C201      		movw r24,r4
+ 676 0108 8E01      		movw r16,r28
+ 677 010a 0F5F      		subi r16,lo8(-(1))
+ 678 010c 1F4F      		sbci r17,hi8(-(1))
+ 679 010e B801      		movw r22,r16
+ 680 0110 4AE0      		ldi r20,lo8(10)
+ 681 0112 50E0      		ldi r21,hi8(10)
+ 682 0114 0E94 0000 		call utoa
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s 			page 13
+
+
+ 683 0118 F801      		movw r30,r16
+ 684 011a 0190      		ld __tmp_reg__,Z+
+ 685 011c 0020      		tst __tmp_reg__
+ 686 011e 01F4      		brne .-6
+ 687 0120 802F      		mov r24,r16
+ 688 0122 8E1B      		sub r24,r30
+ 689 0124 835F      		subi r24,lo8(-(13))
+ 690 0126 00C0      		rjmp .L68
+ 691               	.L69:
+ 692 0128 8E01      		movw r16,r28
+ 693 012a 0F5F      		subi r16,lo8(-(1))
+ 694 012c 1F4F      		sbci r17,hi8(-(1))
+ 695 012e C201      		movw r24,r4
+ 696 0130 B801      		movw r22,r16
+ 697 0132 4AE0      		ldi r20,lo8(10)
+ 698 0134 50E0      		ldi r21,hi8(10)
+ 699 0136 0E94 0000 		call utoa
+ 700 013a F801      		movw r30,r16
+ 701 013c D801      		movw r26,r16
+ 702 013e 0D90      		ld __tmp_reg__,X+
+ 703 0140 0020      		tst __tmp_reg__
+ 704 0142 01F4      		brne .-6
+ 705 0144 EA1B      		sub r30,r26
+ 706 0146 8E2F      		mov r24,r30
+ 707 0148 805F      		subi r24,lo8(-(16))
+ 708 014a 60E0      		ldi r22,lo8(0)
+ 709 014c A801      		movw r20,r16
+ 710 014e 0E94 0000 		call display_show_string
+ 711 0152 C101      		movw r24,r2
+ 712 0154 B801      		movw r22,r16
+ 713 0156 4AE0      		ldi r20,lo8(10)
+ 714 0158 50E0      		ldi r21,hi8(10)
+ 715 015a 0E94 0000 		call utoa
+ 716 015e F801      		movw r30,r16
+ 717 0160 D801      		movw r26,r16
+ 718 0162 0D90      		ld __tmp_reg__,X+
+ 719 0164 0020      		tst __tmp_reg__
+ 720 0166 01F4      		brne .-6
+ 721 0168 EA1B      		sub r30,r26
+ 722 016a 8E2F      		mov r24,r30
+ 723 016c 875F      		subi r24,lo8(-(9))
+ 724 016e 61E0      		ldi r22,lo8(1)
+ 725 0170 A801      		movw r20,r16
+ 726 0172 0E94 0000 		call display_show_string
+ 727 0176 8A85      		ldd r24,Y+10
+ 728 0178 9B85      		ldd r25,Y+11
+ 729 017a B801      		movw r22,r16
+ 730 017c 4AE0      		ldi r20,lo8(10)
+ 731 017e 50E0      		ldi r21,hi8(10)
+ 732 0180 0E94 0000 		call utoa
+ 733 0184 89E0      		ldi r24,lo8(9)
+ 734 0186 00C0      		rjmp .L68
+ 735               	.L56:
+ 736 0188 8E01      		movw r16,r28
+ 737 018a 0F5F      		subi r16,lo8(-(1))
+ 738 018c 1F4F      		sbci r17,hi8(-(1))
+ 739 018e ADB7      		in r26,__SP_L__
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s 			page 14
+
+
+ 740 0190 BEB7      		in r27,__SP_H__
+ 741 0192 1897      		sbiw r26,8
+ 742 0194 0FB6      		in __tmp_reg__,__SREG__
+ 743 0196 F894      		cli
+ 744 0198 BEBF      		out __SP_H__,r27
+ 745 019a 0FBE      		out __SREG__,__tmp_reg__
+ 746 019c ADBF      		out __SP_L__,r26
+ 747 019e EDB7      		in r30,__SP_L__
+ 748 01a0 FEB7      		in r31,__SP_H__
+ 749 01a2 3196      		adiw r30,1
+ 750 01a4 1296      		adiw r26,1+1
+ 751 01a6 1C93      		st X,r17
+ 752 01a8 0E93      		st -X,r16
+ 753 01aa 1197      		sbiw r26,1
+ 754 01ac 80E0      		ldi r24,lo8(.LC0)
+ 755 01ae 90E0      		ldi r25,hi8(.LC0)
+ 756 01b0 9383      		std Z+3,r25
+ 757 01b2 8283      		std Z+2,r24
+ 758 01b4 6482      		std Z+4,r6
+ 759 01b6 7582      		std Z+5,r7
+ 760 01b8 8682      		std Z+6,r8
+ 761 01ba 9782      		std Z+7,r9
+ 762 01bc 0E94 0000 		call sprintf
+ 763 01c0 F801      		movw r30,r16
+ 764 01c2 D801      		movw r26,r16
+ 765 01c4 0D90      		ld __tmp_reg__,X+
+ 766 01c6 0020      		tst __tmp_reg__
+ 767 01c8 01F4      		brne .-6
+ 768 01ca 8DB7      		in r24,__SP_L__
+ 769 01cc 9EB7      		in r25,__SP_H__
+ 770 01ce 0896      		adiw r24,8
+ 771 01d0 0FB6      		in __tmp_reg__,__SREG__
+ 772 01d2 F894      		cli
+ 773 01d4 9EBF      		out __SP_H__,r25
+ 774 01d6 0FBE      		out __SREG__,__tmp_reg__
+ 775 01d8 8DBF      		out __SP_L__,r24
+ 776 01da EA1B      		sub r30,r26
+ 777 01dc 8E2F      		mov r24,r30
+ 778 01de 8F5E      		subi r24,lo8(-(17))
+ 779 01e0 60E0      		ldi r22,lo8(0)
+ 780 01e2 A801      		movw r20,r16
+ 781 01e4 0E94 0000 		call display_show_string
+ 782 01e8 C101      		movw r24,r2
+ 783 01ea B801      		movw r22,r16
+ 784 01ec 4AE0      		ldi r20,lo8(10)
+ 785 01ee 50E0      		ldi r21,hi8(10)
+ 786 01f0 0E94 0000 		call utoa
+ 787 01f4 F801      		movw r30,r16
+ 788 01f6 D801      		movw r26,r16
+ 789 01f8 0D90      		ld __tmp_reg__,X+
+ 790 01fa 0020      		tst __tmp_reg__
+ 791 01fc 01F4      		brne .-6
+ 792 01fe EA1B      		sub r30,r26
+ 793 0200 8E2F      		mov r24,r30
+ 794 0202 805F      		subi r24,lo8(-(16))
+ 795               	.L68:
+ 796 0204 61E0      		ldi r22,lo8(1)
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s 			page 15
+
+
+ 797 0206 00C0      		rjmp .L67
+ 798               	.L59:
+ 799 0208 00D0      		rcall .
+ 800 020a 00D0      		rcall .
+ 801 020c 00D0      		rcall .
+ 802 020e EDB7      		in r30,__SP_L__
+ 803 0210 FEB7      		in r31,__SP_H__
+ 804 0212 3196      		adiw r30,1
+ 805 0214 8E01      		movw r16,r28
+ 806 0216 0F5F      		subi r16,lo8(-(1))
+ 807 0218 1F4F      		sbci r17,hi8(-(1))
+ 808 021a ADB7      		in r26,__SP_L__
+ 809 021c BEB7      		in r27,__SP_H__
+ 810 021e 1296      		adiw r26,1+1
+ 811 0220 1C93      		st X,r17
+ 812 0222 0E93      		st -X,r16
+ 813 0224 1197      		sbiw r26,1
+ 814 0226 80E0      		ldi r24,lo8(.LC1)
+ 815 0228 90E0      		ldi r25,hi8(.LC1)
+ 816 022a 9383      		std Z+3,r25
+ 817 022c 8283      		std Z+2,r24
+ 818 022e 5582      		std Z+5,r5
+ 819 0230 4482      		std Z+4,r4
+ 820 0232 0E94 0000 		call sprintf
+ 821 0236 F801      		movw r30,r16
+ 822 0238 0190      		ld __tmp_reg__,Z+
+ 823 023a 0020      		tst __tmp_reg__
+ 824 023c 01F4      		brne .-6
+ 825 023e 8DB7      		in r24,__SP_L__
+ 826 0240 9EB7      		in r25,__SP_H__
+ 827 0242 0696      		adiw r24,6
+ 828 0244 00C0      		rjmp .L66
+ 829               	.L60:
+ 830 0246 ADB7      		in r26,__SP_L__
+ 831 0248 BEB7      		in r27,__SP_H__
+ 832 024a 1897      		sbiw r26,8
+ 833 024c 0FB6      		in __tmp_reg__,__SREG__
+ 834 024e F894      		cli
+ 835 0250 BEBF      		out __SP_H__,r27
+ 836 0252 0FBE      		out __SREG__,__tmp_reg__
+ 837 0254 ADBF      		out __SP_L__,r26
+ 838 0256 EDB7      		in r30,__SP_L__
+ 839 0258 FEB7      		in r31,__SP_H__
+ 840 025a 3196      		adiw r30,1
+ 841 025c 8E01      		movw r16,r28
+ 842 025e 0F5F      		subi r16,lo8(-(1))
+ 843 0260 1F4F      		sbci r17,hi8(-(1))
+ 844 0262 1296      		adiw r26,1+1
+ 845 0264 1C93      		st X,r17
+ 846 0266 0E93      		st -X,r16
+ 847 0268 1197      		sbiw r26,1
+ 848 026a 80E0      		ldi r24,lo8(.LC0)
+ 849 026c 90E0      		ldi r25,hi8(.LC0)
+ 850 026e 9383      		std Z+3,r25
+ 851 0270 8283      		std Z+2,r24
+ 852 0272 6482      		std Z+4,r6
+ 853 0274 7582      		std Z+5,r7
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s 			page 16
+
+
+ 854 0276 8682      		std Z+6,r8
+ 855 0278 9782      		std Z+7,r9
+ 856 027a 0E94 0000 		call sprintf
+ 857 027e F801      		movw r30,r16
+ 858 0280 0190      		ld __tmp_reg__,Z+
+ 859 0282 0020      		tst __tmp_reg__
+ 860 0284 01F4      		brne .-6
+ 861 0286 8DB7      		in r24,__SP_L__
+ 862 0288 9EB7      		in r25,__SP_H__
+ 863 028a 0896      		adiw r24,8
+ 864               	.L66:
+ 865 028c 0FB6      		in __tmp_reg__,__SREG__
+ 866 028e F894      		cli
+ 867 0290 9EBF      		out __SP_H__,r25
+ 868 0292 0FBE      		out __SREG__,__tmp_reg__
+ 869 0294 8DBF      		out __SP_L__,r24
+ 870 0296 802F      		mov r24,r16
+ 871 0298 8E1B      		sub r24,r30
+ 872 029a 8F5E      		subi r24,lo8(-(17))
+ 873 029c 60E0      		ldi r22,lo8(0)
+ 874               	.L67:
+ 875 029e A801      		movw r20,r16
+ 876 02a0 0E94 0000 		call display_show_string
+ 877               	.L63:
+ 878               	/* epilogue start */
+ 879 02a4 2B96      		adiw r28,11
+ 880 02a6 0FB6      		in __tmp_reg__,__SREG__
+ 881 02a8 F894      		cli
+ 882 02aa DEBF      		out __SP_H__,r29
+ 883 02ac 0FBE      		out __SREG__,__tmp_reg__
+ 884 02ae CDBF      		out __SP_L__,r28
+ 885 02b0 CF91      		pop r28
+ 886 02b2 DF91      		pop r29
+ 887 02b4 1F91      		pop r17
+ 888 02b6 0F91      		pop r16
+ 889 02b8 FF90      		pop r15
+ 890 02ba EF90      		pop r14
+ 891 02bc DF90      		pop r13
+ 892 02be BF90      		pop r11
+ 893 02c0 AF90      		pop r10
+ 894 02c2 9F90      		pop r9
+ 895 02c4 8F90      		pop r8
+ 896 02c6 7F90      		pop r7
+ 897 02c8 6F90      		pop r6
+ 898 02ca 5F90      		pop r5
+ 899 02cc 4F90      		pop r4
+ 900 02ce 3F90      		pop r3
+ 901 02d0 2F90      		pop r2
+ 902 02d2 0895      		ret
+ 903               		.size	display_show, .-display_show
+ 904               	.global	font
+ 905               		.data
+ 906               		.type	font, @object
+ 907               		.size	font, 64
+ 908               	font:
+ 909 000b 1F        		.byte	31
+ 910 000c 11        		.byte	17
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s 			page 17
+
+
+ 911 000d 10        		.byte	16
+ 912 000e 10        		.byte	16
+ 913 000f 10        		.byte	16
+ 914 0010 10        		.byte	16
+ 915 0011 10        		.byte	16
+ 916 0012 00        		.byte	0
+ 917 0013 15        		.byte	21
+ 918 0014 15        		.byte	21
+ 919 0015 15        		.byte	21
+ 920 0016 15        		.byte	21
+ 921 0017 15        		.byte	21
+ 922 0018 15        		.byte	21
+ 923 0019 1F        		.byte	31
+ 924 001a 00        		.byte	0
+ 925 001b 12        		.byte	18
+ 926 001c 15        		.byte	21
+ 927 001d 15        		.byte	21
+ 928 001e 1D        		.byte	29
+ 929 001f 15        		.byte	21
+ 930 0020 15        		.byte	21
+ 931 0021 12        		.byte	18
+ 932 0022 00        		.byte	0
+ 933 0023 11        		.byte	17
+ 934 0024 11        		.byte	17
+ 935 0025 13        		.byte	19
+ 936 0026 15        		.byte	21
+ 937 0027 19        		.byte	25
+ 938 0028 11        		.byte	17
+ 939 0029 11        		.byte	17
+ 940 002a 00        		.byte	0
+ 941 002b 1F        		.byte	31
+ 942 002c 11        		.byte	17
+ 943 002d 11        		.byte	17
+ 944 002e 11        		.byte	17
+ 945 002f 11        		.byte	17
+ 946 0030 11        		.byte	17
+ 947 0031 11        		.byte	17
+ 948 0032 00        		.byte	0
+ 949 0033 11        		.byte	17
+ 950 0034 11        		.byte	17
+ 951 0035 11        		.byte	17
+ 952 0036 0A        		.byte	10
+ 953 0037 04        		.byte	4
+ 954 0038 08        		.byte	8
+ 955 0039 10        		.byte	16
+ 956 003a 00        		.byte	0
+ 957 003b 0F        		.byte	15
+ 958 003c 11        		.byte	17
+ 959 003d 11        		.byte	17
+ 960 003e 0F        		.byte	15
+ 961 003f 05        		.byte	5
+ 962 0040 09        		.byte	9
+ 963 0041 11        		.byte	17
+ 964 0042 00        		.byte	0
+ 965 0043 1F        		.byte	31
+ 966 0044 11        		.byte	17
+ 967 0045 10        		.byte	16
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s 			page 18
+
+
+ 968 0046 1E        		.byte	30
+ 969 0047 11        		.byte	17
+ 970 0048 11        		.byte	17
+ 971 0049 1D        		.byte	29
+ 972 004a 00        		.byte	0
+ 973               	.global	font2
+ 974               		.type	font2, @object
+ 975               		.size	font2, 64
+ 976               	font2:
+ 977 004b 11        		.byte	17
+ 978 004c 11        		.byte	17
+ 979 004d 11        		.byte	17
+ 980 004e 0F        		.byte	15
+ 981 004f 01        		.byte	1
+ 982 0050 01        		.byte	1
+ 983 0051 01        		.byte	1
+ 984 0052 00        		.byte	0
+ 985 0053 15        		.byte	21
+ 986 0054 15        		.byte	21
+ 987 0055 15        		.byte	21
+ 988 0056 0E        		.byte	14
+ 989 0057 15        		.byte	21
+ 990 0058 15        		.byte	21
+ 991 0059 15        		.byte	21
+ 992 005a 00        		.byte	0
+ 993 005b 12        		.byte	18
+ 994 005c 15        		.byte	21
+ 995 005d 15        		.byte	21
+ 996 005e 1D        		.byte	29
+ 997 005f 15        		.byte	21
+ 998 0060 15        		.byte	21
+ 999 0061 12        		.byte	18
+ 1000 0062 00        		.byte	0
+ 1001 0063 11        		.byte	17
+ 1002 0064 11        		.byte	17
+ 1003 0065 13        		.byte	19
+ 1004 0066 15        		.byte	21
+ 1005 0067 19        		.byte	25
+ 1006 0068 11        		.byte	17
+ 1007 0069 11        		.byte	17
+ 1008 006a 00        		.byte	0
+ 1009 006b 1F        		.byte	31
+ 1010 006c 11        		.byte	17
+ 1011 006d 11        		.byte	17
+ 1012 006e 11        		.byte	17
+ 1013 006f 11        		.byte	17
+ 1014 0070 11        		.byte	17
+ 1015 0071 11        		.byte	17
+ 1016 0072 00        		.byte	0
+ 1017 0073 11        		.byte	17
+ 1018 0074 11        		.byte	17
+ 1019 0075 11        		.byte	17
+ 1020 0076 19        		.byte	25
+ 1021 0077 15        		.byte	21
+ 1022 0078 15        		.byte	21
+ 1023 0079 19        		.byte	25
+ 1024 007a 00        		.byte	0
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s 			page 19
+
+
+ 1025 007b 0F        		.byte	15
+ 1026 007c 05        		.byte	5
+ 1027 007d 05        		.byte	5
+ 1028 007e 09        		.byte	9
+ 1029 007f 11        		.byte	17
+ 1030 0080 1F        		.byte	31
+ 1031 0081 11        		.byte	17
+ 1032 0082 11        		.byte	17
+ 1033 0083 0F        		.byte	15
+ 1034 0084 05        		.byte	5
+ 1035 0085 05        		.byte	5
+ 1036 0086 05        		.byte	5
+ 1037 0087 05        		.byte	5
+ 1038 0088 15        		.byte	21
+ 1039 0089 09        		.byte	9
+ 1040 008a 00        		.byte	0
+ 1041               	.global	current_font
+ 1042               	.global	current_font
+ 1043               		.section .bss
+ 1044               		.type	current_font, @object
+ 1045               		.size	current_font, 1
+ 1046               	current_font:
+ 1047 0000 00        		.skip 1,0
+ 1048               	.global	displays
+ 1049               		.data
+ 1050               		.type	displays, @object
+ 1051               		.size	displays, 384
+ 1052               	displays:
+ 1053 008b 4D        		.byte	77
+ 1054 008c 41        		.byte	65
+ 1055 008d 4B        		.byte	75
+ 1056 008e 20        		.byte	32
+ 1057 008f 31        		.byte	49
+ 1058 0090 30        		.byte	48
+ 1059 0091 30        		.byte	48
+ 1060 0092 20        		.byte	32
+ 1061 0093 20        		.byte	32
+ 1062 0094 20        		.byte	32
+ 1063 0095 20        		.byte	32
+ 1064 0096 30        		.byte	48
+ 1065 0097 30        		.byte	48
+ 1066 0098 78        		.byte	120
+ 1067 0099 78        		.byte	120
+ 1068 009a 78        		.byte	120
+ 1069 009b 20        		.byte	32
+ 1070 009c 20        		.byte	32
+ 1071 009d 20        		.byte	32
+ 1072 009e 20        		.byte	32
+ 1073 009f 33        		.byte	51
+ 1074 00a0 41        		.byte	65
+ 1075 00a1 00        		.byte	0
+ 1076 00a2 50        		.byte	80
+ 1077 00a3 05        		.byte	5
+ 1078 00a4 33        		.byte	51
+ 1079 00a5 4B        		.byte	75
+ 1080 00a6 41        		.byte	65
+ 1081 00a7 20        		.byte	32
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s 			page 20
+
+
+ 1082 00a8 20        		.byte	32
+ 1083 00a9 20        		.byte	32
+ 1084 00aa 20        		.byte	32
+ 1085 00ab 4D        		.byte	77
+ 1086 00ac 41        		.byte	65
+ 1087 00ad 4B        		.byte	75
+ 1088 00ae 20        		.byte	32
+ 1089 00af 31        		.byte	49
+ 1090 00b0 30        		.byte	48
+ 1091 00b1 30        		.byte	48
+ 1092 00b2 20        		.byte	32
+ 1093 00b3 20        		.byte	32
+ 1094 00b4 20        		.byte	32
+ 1095 00b5 20        		.byte	32
+ 1096 00b6 30        		.byte	48
+ 1097 00b7 30        		.byte	48
+ 1098 00b8 78        		.byte	120
+ 1099 00b9 78        		.byte	120
+ 1100 00ba 78        		.byte	120
+ 1101 00bb 20        		.byte	32
+ 1102 00bc 20        		.byte	32
+ 1103 00bd 20        		.byte	32
+ 1104 00be 20        		.byte	32
+ 1105 00bf 20        		.byte	32
+ 1106 00c0 00        		.byte	0
+ 1107 00c1 4F        		.byte	79
+ 1108 00c2 54        		.byte	84
+ 1109 00c3 4F        		.byte	79
+ 1110 00c4 42        		.byte	66
+ 1111 00c5 20        		.byte	32
+ 1112 00c6 20        		.byte	32
+ 1113 00c7 20        		.byte	32
+ 1114 00c8 20        		.byte	32
+ 1115 00c9 20        		.byte	32
+ 1116 00ca 20        		.byte	32
+ 1117 00cb 20        		.byte	32
+ 1118 00cc 20        		.byte	32
+ 1119 00cd 20        		.byte	32
+ 1120 00ce 03        		.byte	3
+ 1121 00cf 33        		.byte	51
+ 1122 00d0 4D        		.byte	77
+ 1123 00d1 45        		.byte	69
+ 1124 00d2 50        		.byte	80
+ 1125 00d3 45        		.byte	69
+ 1126 00d4 48        		.byte	72
+ 1127 00d5 03        		.byte	3
+ 1128 00d6 45        		.byte	69
+ 1129 00d7 20        		.byte	32
+ 1130 00d8 20        		.byte	32
+ 1131 00d9 20        		.byte	32
+ 1132 00da 20        		.byte	32
+ 1133 00db 20        		.byte	32
+ 1134 00dc 20        		.byte	32
+ 1135 00dd 20        		.byte	32
+ 1136 00de 04        		.byte	4
+ 1137 00df 4F        		.byte	79
+ 1138 00e0 50        		.byte	80
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s 			page 21
+
+
+ 1139 00e1 54        		.byte	84
+ 1140 00e2 20        		.byte	32
+ 1141 00e3 2D        		.byte	45
+ 1142 00e4 20        		.byte	32
+ 1143 00e5 30        		.byte	48
+ 1144 00e6 78        		.byte	120
+ 1145 00e7 20        		.byte	32
+ 1146 00e8 20        		.byte	32
+ 1147 00e9 20        		.byte	32
+ 1148 00ea 20        		.byte	32
+ 1149 00eb 41        		.byte	65
+ 1150 00ec 42        		.byte	66
+ 1151 00ed 41        		.byte	65
+ 1152 00ee 50        		.byte	80
+ 1153 00ef 03        		.byte	3
+ 1154 00f0 06        		.byte	6
+ 1155 00f1 3F        		.byte	63
+ 1156 00f2 20        		.byte	32
+ 1157 00f3 04        		.byte	4
+ 1158 00f4 4F        		.byte	79
+ 1159 00f5 50        		.byte	80
+ 1160 00f6 54        		.byte	84
+ 1161 00f7 2D        		.byte	45
+ 1162 00f8 30        		.byte	48
+ 1163 00f9 78        		.byte	120
+ 1164 00fa 20        		.byte	32
+ 1165 00fb 20        		.byte	32
+ 1166 00fc 20        		.byte	32
+ 1167 00fd 20        		.byte	32
+ 1168 00fe 20        		.byte	32
+ 1169 00ff 20        		.byte	32
+ 1170 0100 20        		.byte	32
+ 1171 0101 20        		.byte	32
+ 1172 0102 78        		.byte	120
+ 1173 0103 2E        		.byte	46
+ 1174 0104 78        		.byte	120
+ 1175 0105 30        		.byte	48
+ 1176 0106 30        		.byte	48
+ 1177 0107 30        		.byte	48
+ 1178 0108 20        		.byte	32
+ 1179 0109 4B        		.byte	75
+ 1180 010a 4D        		.byte	77
+ 1181 010b 4D        		.byte	77
+ 1182 010c 41        		.byte	65
+ 1183 010d 4B        		.byte	75
+ 1184 010e 20        		.byte	32
+ 1185 010f 31        		.byte	49
+ 1186 0110 30        		.byte	48
+ 1187 0111 30        		.byte	48
+ 1188 0112 20        		.byte	32
+ 1189 0113 20        		.byte	32
+ 1190 0114 20        		.byte	32
+ 1191 0115 20        		.byte	32
+ 1192 0116 30        		.byte	48
+ 1193 0117 30        		.byte	48
+ 1194 0118 78        		.byte	120
+ 1195 0119 78        		.byte	120
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s 			page 22
+
+
+ 1196 011a 78        		.byte	120
+ 1197 011b 20        		.byte	32
+ 1198 011c 55        		.byte	85
+ 1199 011d 53        		.byte	83
+ 1200 011e 42        		.byte	66
+ 1201 011f 20        		.byte	32
+ 1202 0120 20        		.byte	32
+ 1203 0121 53        		.byte	83
+ 1204 0122 43        		.byte	67
+ 1205 0123 2F        		.byte	47
+ 1206 0124 41        		.byte	65
+ 1207 0125 50        		.byte	80
+ 1208 0126 43        		.byte	67
+ 1209 0127 2D        		.byte	45
+ 1210 0128 30        		.byte	48
+ 1211 0129 78        		.byte	120
+ 1212 012a 20        		.byte	32
+ 1213 012b 4D        		.byte	77
+ 1214 012c 41        		.byte	65
+ 1215 012d 4B        		.byte	75
+ 1216 012e 20        		.byte	32
+ 1217 012f 31        		.byte	49
+ 1218 0130 30        		.byte	48
+ 1219 0131 30        		.byte	48
+ 1220 0132 20        		.byte	32
+ 1221 0133 20        		.byte	32
+ 1222 0134 20        		.byte	32
+ 1223 0135 20        		.byte	32
+ 1224 0136 30        		.byte	48
+ 1225 0137 30        		.byte	48
+ 1226 0138 78        		.byte	120
+ 1227 0139 78        		.byte	120
+ 1228 013a 78        		.byte	120
+ 1229 013b 20        		.byte	32
+ 1230 013c 20        		.byte	32
+ 1231 013d 20        		.byte	32
+ 1232 013e 20        		.byte	32
+ 1233 013f 01        		.byte	1
+ 1234 0140 06        		.byte	6
+ 1235 0141 03        		.byte	3
+ 1236 0142 54        		.byte	84
+ 1237 0143 45        		.byte	69
+ 1238 0144 2E        		.byte	46
+ 1239 0145 2E        		.byte	46
+ 1240 0146 2E        		.byte	46
+ 1241 0147 20        		.byte	32
+ 1242 0148 20        		.byte	32
+ 1243 0149 20        		.byte	32
+ 1244 014a 20        		.byte	32
+ 1245 014b 20        		.byte	32
+ 1246 014c 42        		.byte	66
+ 1247 014d 05        		.byte	5
+ 1248 014e 4B        		.byte	75
+ 1249 014f 07        		.byte	7
+ 1250 0150 2E        		.byte	46
+ 1251 0151 20        		.byte	32
+ 1252 0152 4D        		.byte	77
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s 			page 23
+
+
+ 1253 0153 41        		.byte	65
+ 1254 0154 4B        		.byte	75
+ 1255 0155 20        		.byte	32
+ 1256 0156 31        		.byte	49
+ 1257 0157 30        		.byte	48
+ 1258 0158 30        		.byte	48
+ 1259 0159 20        		.byte	32
+ 1260 015a 20        		.byte	32
+ 1261 015b 20        		.byte	32
+ 1262 015c 20        		.byte	32
+ 1263 015d 20        		.byte	32
+ 1264 015e 20        		.byte	32
+ 1265 015f 01        		.byte	1
+ 1266 0160 06        		.byte	6
+ 1267 0161 03        		.byte	3
+ 1268 0162 54        		.byte	84
+ 1269 0163 45        		.byte	69
+ 1270 0164 2E        		.byte	46
+ 1271 0165 2E        		.byte	46
+ 1272 0166 2E        		.byte	46
+ 1273 0167 20        		.byte	32
+ 1274 0168 20        		.byte	32
+ 1275 0169 20        		.byte	32
+ 1276 016a 20        		.byte	32
+ 1277 016b 20        		.byte	32
+ 1278 016c 20        		.byte	32
+ 1279 016d 20        		.byte	32
+ 1280 016e 20        		.byte	32
+ 1281 016f 04        		.byte	4
+ 1282 0170 03        		.byte	3
+ 1283 0171 54        		.byte	84
+ 1284 0172 41        		.byte	65
+ 1285 0173 48        		.byte	72
+ 1286 0174 03        		.byte	3
+ 1287 0175 45        		.byte	69
+ 1288 0176 20        		.byte	32
+ 1289 0177 20        		.byte	32
+ 1290 0178 20        		.byte	32
+ 1291 0179 20        		.byte	32
+ 1292 017a 20        		.byte	32
+ 1293 017b 4D        		.byte	77
+ 1294 017c 4F        		.byte	79
+ 1295 017d 01        		.byte	1
+ 1296 017e 48        		.byte	72
+ 1297 017f 4F        		.byte	79
+ 1298 0180 20        		.byte	32
+ 1299 0181 4F        		.byte	79
+ 1300 0182 54        		.byte	84
+ 1301 0183 4B        		.byte	75
+ 1302 0184 07        		.byte	7
+ 1303 0185 02        		.byte	2
+ 1304 0186 00        		.byte	0
+ 1305 0187 03        		.byte	3
+ 1306 0188 54        		.byte	84
+ 1307 0189 62        		.byte	98
+ 1308 018a 20        		.byte	32
+ 1309 018b 4D        		.byte	77
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s 			page 24
+
+
+ 1310 018c 41        		.byte	65
+ 1311 018d 4B        		.byte	75
+ 1312 018e 20        		.byte	32
+ 1313 018f 31        		.byte	49
+ 1314 0190 30        		.byte	48
+ 1315 0191 30        		.byte	48
+ 1316 0192 20        		.byte	32
+ 1317 0193 20        		.byte	32
+ 1318 0194 20        		.byte	32
+ 1319 0195 20        		.byte	32
+ 1320 0196 30        		.byte	48
+ 1321 0197 30        		.byte	48
+ 1322 0198 78        		.byte	120
+ 1323 0199 78        		.byte	120
+ 1324 019a 78        		.byte	120
+ 1325 019b 04        		.byte	4
+ 1326 019c 4F        		.byte	79
+ 1327 019d 06        		.byte	6
+ 1328 019e 4B        		.byte	75
+ 1329 019f 07        		.byte	7
+ 1330 01a0 02        		.byte	2
+ 1331 01a1 00        		.byte	0
+ 1332 01a2 2E        		.byte	46
+ 1333 01a3 20        		.byte	32
+ 1334 01a4 4B        		.byte	75
+ 1335 01a5 20        		.byte	32
+ 1336 01a6 4F        		.byte	79
+ 1337 01a7 54        		.byte	84
+ 1338 01a8 44        		.byte	68
+ 1339 01a9 52        		.byte	82
+ 1340 01aa 20        		.byte	32
+ 1341 01ab 20        		.byte	32
+ 1342 01ac 20        		.byte	32
+ 1343 01ad 20        		.byte	32
+ 1344 01ae 4F        		.byte	79
+ 1345 01af 01        		.byte	1
+ 1346 01b0 03        		.byte	3
+ 1347 01b1 07        		.byte	7
+ 1348 01b2 4B        		.byte	75
+ 1349 01b3 41        		.byte	65
+ 1350 01b4 20        		.byte	32
+ 1351 01b5 3A        		.byte	58
+ 1352 01b6 20        		.byte	32
+ 1353 01b7 20        		.byte	32
+ 1354 01b8 78        		.byte	120
+ 1355 01b9 78        		.byte	120
+ 1356 01ba 78        		.byte	120
+ 1357 01bb 20        		.byte	32
+ 1358 01bc 20        		.byte	32
+ 1359 01bd 20        		.byte	32
+ 1360 01be 20        		.byte	32
+ 1361 01bf 20        		.byte	32
+ 1362 01c0 20        		.byte	32
+ 1363 01c1 20        		.byte	32
+ 1364 01c2 20        		.byte	32
+ 1365 01c3 20        		.byte	32
+ 1366 01c4 20        		.byte	32
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s 			page 25
+
+
+ 1367 01c5 20        		.byte	32
+ 1368 01c6 20        		.byte	32
+ 1369 01c7 20        		.byte	32
+ 1370 01c8 20        		.byte	32
+ 1371 01c9 20        		.byte	32
+ 1372 01ca 20        		.byte	32
+ 1373 01cb 20        		.byte	32
+ 1374 01cc 20        		.byte	32
+ 1375 01cd 20        		.byte	32
+ 1376 01ce 20        		.byte	32
+ 1377 01cf 20        		.byte	32
+ 1378 01d0 43        		.byte	67
+ 1379 01d1 07        		.byte	7
+ 1380 01d2 50        		.byte	80
+ 1381 01d3 4F        		.byte	79
+ 1382 01d4 43        		.byte	67
+ 1383 01d5 20        		.byte	32
+ 1384 01d6 20        		.byte	32
+ 1385 01d7 20        		.byte	32
+ 1386 01d8 20        		.byte	32
+ 1387 01d9 20        		.byte	32
+ 1388 01da 20        		.byte	32
+ 1389 01db 20        		.byte	32
+ 1390 01dc 20        		.byte	32
+ 1391 01dd 20        		.byte	32
+ 1392 01de 20        		.byte	32
+ 1393 01df 20        		.byte	32
+ 1394 01e0 20        		.byte	32
+ 1395 01e1 20        		.byte	32
+ 1396 01e2 20        		.byte	32
+ 1397 01e3 20        		.byte	32
+ 1398 01e4 20        		.byte	32
+ 1399 01e5 20        		.byte	32
+ 1400 01e6 20        		.byte	32
+ 1401 01e7 20        		.byte	32
+ 1402 01e8 20        		.byte	32
+ 1403 01e9 20        		.byte	32
+ 1404 01ea 20        		.byte	32
+ 1405 01eb 4D        		.byte	77
+ 1406 01ec 41        		.byte	65
+ 1407 01ed 4B        		.byte	75
+ 1408 01ee 20        		.byte	32
+ 1409 01ef 31        		.byte	49
+ 1410 01f0 30        		.byte	48
+ 1411 01f1 30        		.byte	48
+ 1412 01f2 20        		.byte	32
+ 1413 01f3 20        		.byte	32
+ 1414 01f4 20        		.byte	32
+ 1415 01f5 20        		.byte	32
+ 1416 01f6 30        		.byte	48
+ 1417 01f7 30        		.byte	48
+ 1418 01f8 78        		.byte	120
+ 1419 01f9 78        		.byte	120
+ 1420 01fa 78        		.byte	120
+ 1421 01fb 20        		.byte	32
+ 1422 01fc 33        		.byte	51
+ 1423 01fd 41        		.byte	65
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s 			page 26
+
+
+ 1424 01fe 00        		.byte	0
+ 1425 01ff 50        		.byte	80
+ 1426 0200 05        		.byte	5
+ 1427 0201 33        		.byte	51
+ 1428 0202 4B        		.byte	75
+ 1429 0203 41        		.byte	65
+ 1430 0204 20        		.byte	32
+ 1431 0205 2D        		.byte	45
+ 1432 0206 20        		.byte	32
+ 1433 0207 4F        		.byte	79
+ 1434 0208 4B        		.byte	75
+ 1435 0209 20        		.byte	32
+ 1436 020a 20        		.byte	32
+ 1437               	.global __do_copy_data
+ 1438               	.global __do_clear_bss
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s 			page 27
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 text_lcd_MAK101_Rus.c
+C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s:2      *ABS*:0000003f __SREG__
+C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s:3      *ABS*:0000003e __SP_H__
+C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s:4      *ABS*:0000003d __SP_L__
+C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s:5      *ABS*:00000034 __CCP__
+C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s:11     .text.display_set_channel:00000000 display_set_channel
+C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s:20     .text.display_write_byte:00000000 display_write_byte
+C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s:165    .text.display_set_cursor_pos:00000000 display_set_cursor_pos
+C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s:187    .text.display_hide_cursor:00000000 display_hide_cursor
+C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s:199    .text.display_show_cursor:00000000 display_show_cursor
+C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s:211    .text.display_clear_screen:00000000 display_clear_screen
+C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s:223    .text.display_set_font2:00000000 display_set_font2
+C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s:976    .data:0000004b font2
+C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s:1046   .bss:00000000 current_font
+C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s:251    .text.display_set_font:00000000 display_set_font
+C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s:908    .data:0000000b font
+C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s:279    .text.display_init:00000000 display_init
+C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s:419    .text.display_show_string:00000000 display_show_string
+C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s:443    .text.display_can_write:00000000 display_can_write
+C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s:457    .text.display_can_read:00000000 display_can_read
+C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s:471    .text.display_wait_for_work:00000000 display_wait_for_work
+C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s:541    .text.display_show:00000000 display_show
+C:\Users\hag\AppData\Local\Temp/cckm5Ejq.s:1052   .data:0000008b displays
+
+UNDEFINED SYMBOLS
+utoa
+sprintf
+__do_copy_data
+__do_clear_bss

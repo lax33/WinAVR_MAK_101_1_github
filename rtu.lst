@@ -1,0 +1,492 @@
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cc1vKuxg.s 			page 1
+
+
+   1               		.file	"rtu.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.data
+   9               	.LC0:
+  10 0000 2D2D 2052 		.string	"-- Registering UART0 failed\n\r"
+  10      6567 6973 
+  10      7465 7269 
+  10      6E67 2055 
+  10      4152 5430 
+  11               	.LC1:
+  12 001e 2D2D 2052 		.string	"-- Registering UART1 failed\n\r"
+  12      6567 6973 
+  12      7465 7269 
+  12      6E67 2055 
+  12      4152 5431 
+  13               	.LC2:
+  14 003c 7561 7274 		.string	"uart0"
+  14      3000 
+  15               	.LC3:
+  16 0042 772B 6200 		.string	"w+b"
+  17               	.LC4:
+  18 0046 722B 6200 		.string	"r+b"
+  19               	.LC5:
+  20 004a 2D2D 2D3D 		.string	"---===<<< RTU-Diagnostic Unit >>>===---\n\r"
+  20      3D3D 3C3C 
+  20      3C20 5254 
+  20      552D 4469 
+  20      6167 6E6F 
+  21               	.LC6:
+  22 0074 2020 2020 		.string	"                   (c)2005-2013        \n\r"
+  22      2020 2020 
+  22      2020 2020 
+  22      2020 2020 
+  22      2020 2028 
+  23               	.LC7:
+  24 009e 5F5F 5F5F 		.string	"_______________________________________\n\r"
+  24      5F5F 5F5F 
+  24      5F5F 5F5F 
+  24      5F5F 5F5F 
+  24      5F5F 5F5F 
+  25               	.LC8:
+  26 00c8 2020 2020 		.string	"           mail-to D.Popesku@beliit.com\n\r"
+  26      2020 2020 
+  26      2020 206D 
+  26      6169 6C2D 
+  26      746F 2044 
+  27               	.LC9:
+  28 00f2 2D2D 2052 		.string	"-- Registering eth0 failed\n\r"
+  28      6567 6973 
+  28      7465 7269 
+  28      6E67 2065 
+  28      7468 3020 
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cc1vKuxg.s 			page 2
+
+
+  29               	.LC10:
+  30 010f 6574 6830 		.string	"eth0"
+  30      00
+  31               	.LC11:
+  32 0114 6574 6852 		.string	"ethRef"
+  32      6566 00
+  33               	.LC12:
+  34 011b 5350 495F 		.string	"SPI_REC"
+  34      5245 4300 
+  35               	.LC13:
+  36 0123 6574 6855 		.string	"ethUdpFind"
+  36      6470 4669 
+  36      6E64 00
+  37               	.LC14:
+  38 012e 6F74 6175 		.string	"otau_th"
+  38      5F74 6800 
+  39               	.LC15:
+  40 0136 5749 4E5F 		.string	"WIN_Load"
+  40      4C6F 6164 
+  40      00
+  41               	.LC16:
+  42 013f 506F 7765 		.string	"Power_Led_Thread"
+  42      725F 4C65 
+  42      645F 5468 
+  42      7265 6164 
+  42      00
+  43               	.LC17:
+  44 0150 506F 7765 		.string	"Power_Sw_Thread"
+  44      725F 5377 
+  44      5F54 6872 
+  44      6561 6400 
+  45               	.LC18:
+  46 0160 0D0A 5275 		.string	"\r\nRunning ...\r"
+  46      6E6E 696E 
+  46      6720 2E2E 
+  46      2E0D 00
+  47               		.section	.text.NutAppMain,"ax",@progbits
+  48               	.global	NutAppMain
+  49               		.type	NutAppMain, @function
+  50               	NutAppMain:
+  51 0000 CF92      		push r12
+  52 0002 DF92      		push r13
+  53 0004 EF92      		push r14
+  54 0006 FF92      		push r15
+  55 0008 0F93      		push r16
+  56 000a 1F93      		push r17
+  57 000c DF93      		push r29
+  58 000e CF93      		push r28
+  59 0010 00D0      		rcall .
+  60 0012 0F92      		push __tmp_reg__
+  61 0014 CDB7      		in r28,__SP_L__
+  62 0016 DEB7      		in r29,__SP_H__
+  63               	/* prologue: function */
+  64               	/* frame size = 3 */
+  65 0018 8E98      		cbi 49-32,6
+  66 001a 969A      		sbi 50-32,6
+  67 001c 8C98      		cbi 49-32,4
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cc1vKuxg.s 			page 3
+
+
+  68 001e 949A      		sbi 50-32,4
+  69 0020 849B      		sbis 48-32,4
+  70 0022 00C0      		rjmp .L2
+  71 0024 8699      		sbic 48-32,6
+  72 0026 00C0      		rjmp .L3
+  73               	.L2:
+  74 0028 80E0      		ldi r24,lo8(0)
+  75 002a 0E94 0000 		call set_power_sw
+  76 002e 80E0      		ldi r24,lo8(0)
+  77 0030 0E94 0000 		call set_start_time_min
+  78 0034 80E0      		ldi r24,lo8(0)
+  79 0036 0E94 0000 		call set_start_time_sec
+  80               	.L3:
+  81 003a 1982      		std Y+1,__zero_reg__
+  82 003c 81E0      		ldi r24,lo8(1)
+  83 003e 8A83      		std Y+2,r24
+  84 0040 8FE1      		ldi r24,lo8(31)
+  85 0042 8B83      		std Y+3,r24
+  86 0044 CE01      		movw r24,r28
+  87 0046 0196      		adiw r24,1
+  88 0048 0E94 0000 		call ds_set_resolution
+  89 004c 0E94 0000 		call display_init
+  90 0050 0E94 0000 		call display_clear_screen
+  91 0054 80E0      		ldi r24,lo8(0)
+  92 0056 40E0      		ldi r20,lo8(115200)
+  93 0058 52EC      		ldi r21,hi8(115200)
+  94 005a 61E0      		ldi r22,hlo8(115200)
+  95 005c 70E0      		ldi r23,hhi8(115200)
+  96 005e 00E0      		ldi r16,lo8(0)
+  97 0060 10E0      		ldi r17,hi8(0)
+  98 0062 20E0      		ldi r18,hlo8(0)
+  99 0064 30E0      		ldi r19,hhi8(0)
+ 100 0066 0E94 0000 		call initUart
+ 101 006a 892B      		or r24,r25
+ 102 006c 01F0      		breq .L4
+ 103 006e 00D0      		rcall .
+ 104 0070 80E0      		ldi r24,lo8(.LC0)
+ 105 0072 90E0      		ldi r25,hi8(.LC0)
+ 106 0074 EDB7      		in r30,__SP_L__
+ 107 0076 FEB7      		in r31,__SP_H__
+ 108 0078 9283      		std Z+2,r25
+ 109 007a 8183      		std Z+1,r24
+ 110 007c 0E94 0000 		call printf
+ 111 0080 0F90      		pop __tmp_reg__
+ 112 0082 0F90      		pop __tmp_reg__
+ 113               	.L4:
+ 114 0084 81E0      		ldi r24,lo8(1)
+ 115 0086 40E0      		ldi r20,lo8(57600)
+ 116 0088 51EE      		ldi r21,hi8(57600)
+ 117 008a 60E0      		ldi r22,hlo8(57600)
+ 118 008c 70E0      		ldi r23,hhi8(57600)
+ 119 008e 00E2      		ldi r16,lo8(800)
+ 120 0090 13E0      		ldi r17,hi8(800)
+ 121 0092 20E0      		ldi r18,hlo8(800)
+ 122 0094 30E0      		ldi r19,hhi8(800)
+ 123 0096 0E94 0000 		call initUart
+ 124 009a 892B      		or r24,r25
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cc1vKuxg.s 			page 4
+
+
+ 125 009c 01F0      		breq .L5
+ 126 009e 00D0      		rcall .
+ 127 00a0 80E0      		ldi r24,lo8(.LC1)
+ 128 00a2 90E0      		ldi r25,hi8(.LC1)
+ 129 00a4 EDB7      		in r30,__SP_L__
+ 130 00a6 FEB7      		in r31,__SP_H__
+ 131 00a8 9283      		std Z+2,r25
+ 132 00aa 8183      		std Z+1,r24
+ 133 00ac 0E94 0000 		call printf
+ 134 00b0 0F90      		pop __tmp_reg__
+ 135 00b2 0F90      		pop __tmp_reg__
+ 136               	.L5:
+ 137 00b4 0E94 0000 		call get_rtu_number
+ 138 00b8 6F5F      		subi r22,lo8(16777215)
+ 139 00ba 7F4F      		sbci r23,hi8(16777215)
+ 140 00bc 8F4F      		sbci r24,hlo8(16777215)
+ 141 00be 9040      		sbci r25,hhi8(16777215)
+ 142 00c0 01F4      		brne .L6
+ 143 00c2 80E0      		ldi r24,lo8(0)
+ 144 00c4 0E94 0000 		call set_start_time_min
+ 145 00c8 80E0      		ldi r24,lo8(0)
+ 146 00ca 0E94 0000 		call set_start_time_sec
+ 147 00ce 62E7      		ldi r22,lo8(114)
+ 148 00d0 70E0      		ldi r23,hi8(114)
+ 149 00d2 80E0      		ldi r24,hlo8(114)
+ 150 00d4 90E0      		ldi r25,hhi8(114)
+ 151 00d6 0E94 0000 		call set_rtu_number
+ 152 00da 0E94 0000 		call defaultNet
+ 153               	.L6:
+ 154 00de 0E94 0000 		call get_rtu_number
+ 155 00e2 7B01      		movw r14,r22
+ 156 00e4 8C01      		movw r16,r24
+ 157 00e6 80E0      		ldi r24,lo8(0)
+ 158 00e8 60E0      		ldi r22,lo8(0)
+ 159 00ea 70E0      		ldi r23,hi8(0)
+ 160 00ec 40E0      		ldi r20,lo8(0)
+ 161 00ee 50E0      		ldi r21,hi8(0)
+ 162 00f0 20E0      		ldi r18,lo8(0)
+ 163 00f2 30E0      		ldi r19,hi8(0)
+ 164 00f4 0E94 0000 		call display_show
+ 165 00f8 0E94 0000 		call init_timer1
+ 166 00fc 0E94 0000 		call ac_ii_init
+ 167 0100 0E94 0000 		call otdr_init
+ 168 0104 0E94 0000 		call init_key
+ 169 0108 0E94 0000 		call init_power_pc
+ 170 010c 4091 0000 		lds r20,__iob+2
+ 171 0110 5091 0000 		lds r21,(__iob+2)+1
+ 172 0114 80E0      		ldi r24,lo8(.LC2)
+ 173 0116 90E0      		ldi r25,hi8(.LC2)
+ 174 0118 60E0      		ldi r22,lo8(.LC3)
+ 175 011a 70E0      		ldi r23,hi8(.LC3)
+ 176 011c 0E94 0000 		call freopen
+ 177 0120 4091 0000 		lds r20,__iob
+ 178 0124 5091 0000 		lds r21,(__iob)+1
+ 179 0128 80E0      		ldi r24,lo8(.LC2)
+ 180 012a 90E0      		ldi r25,hi8(.LC2)
+ 181 012c 60E0      		ldi r22,lo8(.LC4)
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cc1vKuxg.s 			page 5
+
+
+ 182 012e 70E0      		ldi r23,hi8(.LC4)
+ 183 0130 0E94 0000 		call freopen
+ 184 0134 00D0      		rcall .
+ 185 0136 80E0      		ldi r24,lo8(.LC5)
+ 186 0138 90E0      		ldi r25,hi8(.LC5)
+ 187 013a EDB7      		in r30,__SP_L__
+ 188 013c FEB7      		in r31,__SP_H__
+ 189 013e 9283      		std Z+2,r25
+ 190 0140 8183      		std Z+1,r24
+ 191 0142 0E94 0000 		call printf
+ 192 0146 80E0      		ldi r24,lo8(.LC6)
+ 193 0148 90E0      		ldi r25,hi8(.LC6)
+ 194 014a EDB7      		in r30,__SP_L__
+ 195 014c FEB7      		in r31,__SP_H__
+ 196 014e 9283      		std Z+2,r25
+ 197 0150 8183      		std Z+1,r24
+ 198 0152 0E94 0000 		call printf
+ 199 0156 80E0      		ldi r24,lo8(.LC7)
+ 200 0158 90E0      		ldi r25,hi8(.LC7)
+ 201 015a EDB7      		in r30,__SP_L__
+ 202 015c FEB7      		in r31,__SP_H__
+ 203 015e 9283      		std Z+2,r25
+ 204 0160 8183      		std Z+1,r24
+ 205 0162 0E94 0000 		call printf
+ 206 0166 80E0      		ldi r24,lo8(.LC8)
+ 207 0168 90E0      		ldi r25,hi8(.LC8)
+ 208 016a EDB7      		in r30,__SP_L__
+ 209 016c FEB7      		in r31,__SP_H__
+ 210 016e 9283      		std Z+2,r25
+ 211 0170 8183      		std Z+1,r24
+ 212 0172 0E94 0000 		call printf
+ 213 0176 0F90      		pop __tmp_reg__
+ 214 0178 0F90      		pop __tmp_reg__
+ 215 017a 0E94 0000 		call initNetwork
+ 216 017e 80E0      		ldi r24,lo8(devEth0)
+ 217 0180 90E0      		ldi r25,hi8(devEth0)
+ 218 0182 60E0      		ldi r22,lo8(-32000)
+ 219 0184 73E8      		ldi r23,hi8(-32000)
+ 220 0186 45E0      		ldi r20,lo8(5)
+ 221 0188 0E94 0000 		call NutRegisterDevice
+ 222 018c 892B      		or r24,r25
+ 223 018e 01F0      		breq .L7
+ 224 0190 00D0      		rcall .
+ 225 0192 80E0      		ldi r24,lo8(.LC9)
+ 226 0194 90E0      		ldi r25,hi8(.LC9)
+ 227 0196 EDB7      		in r30,__SP_L__
+ 228 0198 FEB7      		in r31,__SP_H__
+ 229 019a 9283      		std Z+2,r25
+ 230 019c 8183      		std Z+1,r24
+ 231 019e 0E94 0000 		call printf
+ 232 01a2 0F90      		pop __tmp_reg__
+ 233 01a4 0F90      		pop __tmp_reg__
+ 234               	.L7:
+ 235 01a6 2091 0000 		lds r18,confnet+16
+ 236 01aa 3091 0000 		lds r19,(confnet+16)+1
+ 237 01ae 4091 0000 		lds r20,(confnet+16)+2
+ 238 01b2 5091 0000 		lds r21,(confnet+16)+3
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cc1vKuxg.s 			page 6
+
+
+ 239 01b6 E090 0000 		lds r14,confnet+20
+ 240 01ba F090 0000 		lds r15,(confnet+20)+1
+ 241 01be 0091 0000 		lds r16,(confnet+20)+2
+ 242 01c2 1091 0000 		lds r17,(confnet+20)+3
+ 243 01c6 80E0      		ldi r24,lo8(.LC10)
+ 244 01c8 90E0      		ldi r25,hi8(.LC10)
+ 245 01ca 60E0      		ldi r22,lo8(confnet+10)
+ 246 01cc 70E0      		ldi r23,hi8(confnet+10)
+ 247 01ce 0E94 0000 		call NutNetIfConfig
+ 248 01d2 8091 0000 		lds r24,confnet+16
+ 249 01d6 9091 0000 		lds r25,(confnet+16)+1
+ 250 01da A091 0000 		lds r26,(confnet+16)+2
+ 251 01de B091 0000 		lds r27,(confnet+16)+3
+ 252 01e2 0097      		sbiw r24,0
+ 253 01e4 A105      		cpc r26,__zero_reg__
+ 254 01e6 B105      		cpc r27,__zero_reg__
+ 255 01e8 01F0      		breq .L8
+ 256 01ea E090 0000 		lds r14,confnet+24
+ 257 01ee F090 0000 		lds r15,(confnet+24)+1
+ 258 01f2 0091 0000 		lds r16,(confnet+24)+2
+ 259 01f6 1091 0000 		lds r17,(confnet+24)+3
+ 260 01fa E114      		cp r14,__zero_reg__
+ 261 01fc F104      		cpc r15,__zero_reg__
+ 262 01fe 0105      		cpc r16,__zero_reg__
+ 263 0200 1105      		cpc r17,__zero_reg__
+ 264 0202 01F0      		breq .L8
+ 265 0204 60E0      		ldi r22,lo8(0)
+ 266 0206 70E0      		ldi r23,hi8(0)
+ 267 0208 80E0      		ldi r24,hlo8(0)
+ 268 020a 90E0      		ldi r25,hhi8(0)
+ 269 020c 20E0      		ldi r18,lo8(0)
+ 270 020e 30E0      		ldi r19,hi8(0)
+ 271 0210 40E0      		ldi r20,hlo8(0)
+ 272 0212 50E0      		ldi r21,hhi8(0)
+ 273 0214 E0E0      		ldi r30,lo8(devEth0)
+ 274 0216 CE2E      		mov r12,r30
+ 275 0218 E0E0      		ldi r30,hi8(devEth0)
+ 276 021a DE2E      		mov r13,r30
+ 277 021c 0E94 0000 		call NutIpRouteAdd
+ 278               	.L8:
+ 279 0220 0E94 0000 		call PrintNetworkParam
+ 280 0224 80E0      		ldi r24,lo8(.LC11)
+ 281 0226 90E0      		ldi r25,hi8(.LC11)
+ 282 0228 60E0      		ldi r22,lo8(gs(ReflectThread))
+ 283 022a 70E0      		ldi r23,hi8(gs(ReflectThread))
+ 284 022c 40E0      		ldi r20,lo8(0)
+ 285 022e 50E0      		ldi r21,hi8(0)
+ 286 0230 20E0      		ldi r18,lo8(512)
+ 287 0232 32E0      		ldi r19,hi8(512)
+ 288 0234 0E94 0000 		call NutThreadCreate
+ 289 0238 80E0      		ldi r24,lo8(.LC12)
+ 290 023a 90E0      		ldi r25,hi8(.LC12)
+ 291 023c 60E0      		ldi r22,lo8(gs(SPI_Receiver))
+ 292 023e 70E0      		ldi r23,hi8(gs(SPI_Receiver))
+ 293 0240 40E0      		ldi r20,lo8(0)
+ 294 0242 50E0      		ldi r21,hi8(0)
+ 295 0244 20E0      		ldi r18,lo8(256)
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cc1vKuxg.s 			page 7
+
+
+ 296 0246 31E0      		ldi r19,hi8(256)
+ 297 0248 0E94 0000 		call NutThreadCreate
+ 298 024c 80E0      		ldi r24,lo8(.LC13)
+ 299 024e 90E0      		ldi r25,hi8(.LC13)
+ 300 0250 60E0      		ldi r22,lo8(gs(UdpFind))
+ 301 0252 70E0      		ldi r23,hi8(gs(UdpFind))
+ 302 0254 40E0      		ldi r20,lo8(0)
+ 303 0256 50E0      		ldi r21,hi8(0)
+ 304 0258 20E0      		ldi r18,lo8(512)
+ 305 025a 32E0      		ldi r19,hi8(512)
+ 306 025c 0E94 0000 		call NutThreadCreate
+ 307 0260 0E94 0000 		call otau_init
+ 308 0264 80E0      		ldi r24,lo8(.LC14)
+ 309 0266 90E0      		ldi r25,hi8(.LC14)
+ 310 0268 60E0      		ldi r22,lo8(gs(OTAU_Thread))
+ 311 026a 70E0      		ldi r23,hi8(gs(OTAU_Thread))
+ 312 026c 40E0      		ldi r20,lo8(0)
+ 313 026e 50E0      		ldi r21,hi8(0)
+ 314 0270 20E0      		ldi r18,lo8(256)
+ 315 0272 31E0      		ldi r19,hi8(256)
+ 316 0274 0E94 0000 		call NutThreadCreate
+ 317 0278 8E98      		cbi 49-32,6
+ 318 027a 969A      		sbi 50-32,6
+ 319 027c 869B      		sbis 48-32,6
+ 320 027e 00C0      		rjmp .L9
+ 321 0280 80E0      		ldi r24,lo8(.LC15)
+ 322 0282 90E0      		ldi r25,hi8(.LC15)
+ 323 0284 60E0      		ldi r22,lo8(gs(WIN_Load_Thread))
+ 324 0286 70E0      		ldi r23,hi8(gs(WIN_Load_Thread))
+ 325 0288 40E0      		ldi r20,lo8(0)
+ 326 028a 50E0      		ldi r21,hi8(0)
+ 327 028c 20E0      		ldi r18,lo8(256)
+ 328 028e 31E0      		ldi r19,hi8(256)
+ 329 0290 0E94 0000 		call NutThreadCreate
+ 330 0294 80E0      		ldi r24,lo8(.LC16)
+ 331 0296 90E0      		ldi r25,hi8(.LC16)
+ 332 0298 60E0      		ldi r22,lo8(gs(Power_Led_Thread))
+ 333 029a 70E0      		ldi r23,hi8(gs(Power_Led_Thread))
+ 334 029c 40E0      		ldi r20,lo8(0)
+ 335 029e 50E0      		ldi r21,hi8(0)
+ 336 02a0 20E8      		ldi r18,lo8(128)
+ 337 02a2 30E0      		ldi r19,hi8(128)
+ 338 02a4 0E94 0000 		call NutThreadCreate
+ 339 02a8 80E0      		ldi r24,lo8(.LC17)
+ 340 02aa 90E0      		ldi r25,hi8(.LC17)
+ 341 02ac 60E0      		ldi r22,lo8(gs(Power_Sw_Thread))
+ 342 02ae 70E0      		ldi r23,hi8(gs(Power_Sw_Thread))
+ 343 02b0 40E0      		ldi r20,lo8(0)
+ 344 02b2 50E0      		ldi r21,hi8(0)
+ 345 02b4 20E8      		ldi r18,lo8(128)
+ 346 02b6 30E0      		ldi r19,hi8(128)
+ 347 02b8 0E94 0000 		call NutThreadCreate
+ 348               	.L9:
+ 349 02bc 80E0      		ldi r24,lo8(.LC18)
+ 350 02be 90E0      		ldi r25,hi8(.LC18)
+ 351 02c0 0E94 0000 		call puts
+ 352 02c4 0E94 0000 		call loopNetwork
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cc1vKuxg.s 			page 8
+
+
+ 353 02c8 80E0      		ldi r24,lo8(0)
+ 354 02ca 90E0      		ldi r25,hi8(0)
+ 355               	/* epilogue start */
+ 356 02cc 0F90      		pop __tmp_reg__
+ 357 02ce 0F90      		pop __tmp_reg__
+ 358 02d0 0F90      		pop __tmp_reg__
+ 359 02d2 CF91      		pop r28
+ 360 02d4 DF91      		pop r29
+ 361 02d6 1F91      		pop r17
+ 362 02d8 0F91      		pop r16
+ 363 02da FF90      		pop r15
+ 364 02dc EF90      		pop r14
+ 365 02de DF90      		pop r13
+ 366 02e0 CF90      		pop r12
+ 367 02e2 0895      		ret
+ 368               		.size	NutAppMain, .-NutAppMain
+ 369               	.global __do_copy_data
+GAS LISTING C:\Users\hag\AppData\Local\Temp/cc1vKuxg.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 rtu.c
+C:\Users\hag\AppData\Local\Temp/cc1vKuxg.s:2      *ABS*:0000003f __SREG__
+C:\Users\hag\AppData\Local\Temp/cc1vKuxg.s:3      *ABS*:0000003e __SP_H__
+C:\Users\hag\AppData\Local\Temp/cc1vKuxg.s:4      *ABS*:0000003d __SP_L__
+C:\Users\hag\AppData\Local\Temp/cc1vKuxg.s:5      *ABS*:00000034 __CCP__
+C:\Users\hag\AppData\Local\Temp/cc1vKuxg.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\hag\AppData\Local\Temp/cc1vKuxg.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\hag\AppData\Local\Temp/cc1vKuxg.s:50     .text.NutAppMain:00000000 NutAppMain
+
+UNDEFINED SYMBOLS
+set_power_sw
+set_start_time_min
+set_start_time_sec
+ds_set_resolution
+display_init
+display_clear_screen
+initUart
+printf
+get_rtu_number
+set_rtu_number
+defaultNet
+display_show
+init_timer1
+ac_ii_init
+otdr_init
+init_key
+init_power_pc
+__iob
+freopen
+initNetwork
+devEth0
+NutRegisterDevice
+confnet
+NutNetIfConfig
+NutIpRouteAdd
+PrintNetworkParam
+ReflectThread
+NutThreadCreate
+SPI_Receiver
+UdpFind
+otau_init
+OTAU_Thread
+WIN_Load_Thread
+Power_Led_Thread
+Power_Sw_Thread
+puts
+loopNetwork
+__do_copy_data

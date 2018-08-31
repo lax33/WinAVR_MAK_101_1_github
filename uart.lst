@@ -1,0 +1,536 @@
+GAS LISTING C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s 			page 1
+
+
+   1               		.file	"uart.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.section	.uartloader,"ax",@progbits
+   9               	.global	uart0_send
+  10               		.type	uart0_send, @function
+  11               	uart0_send:
+  12               	/* prologue: function */
+  13               	/* frame size = 0 */
+  14               	.L2:
+  15 0000 5D9B      		sbis 43-32,5
+  16 0002 00C0      		rjmp .L2
+  17 0004 8CB9      		out 44-32,r24
+  18               	/* epilogue start */
+  19 0006 0895      		ret
+  20               		.size	uart0_send, .-uart0_send
+  21               	.global	uart0_rec
+  22               		.type	uart0_rec, @function
+  23               	uart0_rec:
+  24               	/* prologue: function */
+  25               	/* frame size = 0 */
+  26               	.L6:
+  27 0008 5F9B      		sbis 43-32,7
+  28 000a 00C0      		rjmp .L6
+  29 000c 8CB1      		in r24,44-32
+  30               	/* epilogue start */
+  31 000e 0895      		ret
+  32               		.size	uart0_rec, .-uart0_rec
+  33               	.global	uart0_send_buff
+  34               		.type	uart0_send_buff, @function
+  35               	uart0_send_buff:
+  36               	/* prologue: function */
+  37               	/* frame size = 0 */
+  38 0010 20E0      		ldi r18,lo8(0)
+  39 0012 30E0      		ldi r19,hi8(0)
+  40 0014 00C0      		rjmp .L10
+  41               	.L12:
+  42 0016 FC01      		movw r30,r24
+  43 0018 E20F      		add r30,r18
+  44 001a F31F      		adc r31,r19
+  45 001c E081      		ld r30,Z
+  46               	.L11:
+  47 001e 5D9B      		sbis 43-32,5
+  48 0020 00C0      		rjmp .L11
+  49 0022 ECB9      		out 44-32,r30
+  50 0024 2F5F      		subi r18,lo8(-(1))
+  51 0026 3F4F      		sbci r19,hi8(-(1))
+  52               	.L10:
+  53 0028 2617      		cp r18,r22
+  54 002a 3707      		cpc r19,r23
+  55 002c 00F0      		brlo .L12
+  56               	/* epilogue start */
+  57 002e 0895      		ret
+GAS LISTING C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s 			page 2
+
+
+  58               		.size	uart0_send_buff, .-uart0_send_buff
+  59               	.global	uart0_rec_buff
+  60               		.type	uart0_rec_buff, @function
+  61               	uart0_rec_buff:
+  62               	/* prologue: function */
+  63               	/* frame size = 0 */
+  64 0030 AC01      		movw r20,r24
+  65 0032 20E0      		ldi r18,lo8(0)
+  66 0034 30E0      		ldi r19,hi8(0)
+  67 0036 00C0      		rjmp .L16
+  68               	.L19:
+  69 0038 5F9B      		sbis 43-32,7
+  70 003a 00C0      		rjmp .L19
+  71 003c 8CB1      		in r24,44-32
+  72 003e FA01      		movw r30,r20
+  73 0040 E20F      		add r30,r18
+  74 0042 F31F      		adc r31,r19
+  75 0044 8083      		st Z,r24
+  76 0046 2F5F      		subi r18,lo8(-(1))
+  77 0048 3F4F      		sbci r19,hi8(-(1))
+  78               	.L16:
+  79 004a 2617      		cp r18,r22
+  80 004c 3707      		cpc r19,r23
+  81 004e 00F0      		brlo .L19
+  82               	/* epilogue start */
+  83 0050 0895      		ret
+  84               		.size	uart0_rec_buff, .-uart0_rec_buff
+  85               		.section	.text.uart0_send_boot,"ax",@progbits
+  86               	.global	uart0_send_boot
+  87               		.type	uart0_send_boot, @function
+  88               	uart0_send_boot:
+  89               	/* prologue: function */
+  90               	/* frame size = 0 */
+  91               	.L22:
+  92 0000 5D9B      		sbis 43-32,5
+  93 0002 00C0      		rjmp .L22
+  94 0004 8CB9      		out 44-32,r24
+  95               	/* epilogue start */
+  96 0006 0895      		ret
+  97               		.size	uart0_send_boot, .-uart0_send_boot
+  98               		.section	.text.uart0_rec_boot,"ax",@progbits
+  99               	.global	uart0_rec_boot
+ 100               		.type	uart0_rec_boot, @function
+ 101               	uart0_rec_boot:
+ 102               	/* prologue: function */
+ 103               	/* frame size = 0 */
+ 104               	.L26:
+ 105 0000 5F9B      		sbis 43-32,7
+ 106 0002 00C0      		rjmp .L26
+ 107 0004 8CB1      		in r24,44-32
+ 108               	/* epilogue start */
+ 109 0006 0895      		ret
+ 110               		.size	uart0_rec_boot, .-uart0_rec_boot
+ 111               		.section	.text.uart0_send_buff_boot,"ax",@progbits
+ 112               	.global	uart0_send_buff_boot
+ 113               		.type	uart0_send_buff_boot, @function
+ 114               	uart0_send_buff_boot:
+GAS LISTING C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s 			page 3
+
+
+ 115               	/* prologue: function */
+ 116               	/* frame size = 0 */
+ 117 0000 20E0      		ldi r18,lo8(0)
+ 118 0002 30E0      		ldi r19,hi8(0)
+ 119 0004 00C0      		rjmp .L30
+ 120               	.L32:
+ 121 0006 FC01      		movw r30,r24
+ 122 0008 E20F      		add r30,r18
+ 123 000a F31F      		adc r31,r19
+ 124 000c E081      		ld r30,Z
+ 125               	.L31:
+ 126 000e 5D9B      		sbis 43-32,5
+ 127 0010 00C0      		rjmp .L31
+ 128 0012 ECB9      		out 44-32,r30
+ 129 0014 2F5F      		subi r18,lo8(-(1))
+ 130 0016 3F4F      		sbci r19,hi8(-(1))
+ 131               	.L30:
+ 132 0018 2617      		cp r18,r22
+ 133 001a 3707      		cpc r19,r23
+ 134 001c 00F0      		brlo .L32
+ 135               	/* epilogue start */
+ 136 001e 0895      		ret
+ 137               		.size	uart0_send_buff_boot, .-uart0_send_buff_boot
+ 138               		.section	.text.uart0_rec_buff_boot,"ax",@progbits
+ 139               	.global	uart0_rec_buff_boot
+ 140               		.type	uart0_rec_buff_boot, @function
+ 141               	uart0_rec_buff_boot:
+ 142               	/* prologue: function */
+ 143               	/* frame size = 0 */
+ 144 0000 AC01      		movw r20,r24
+ 145 0002 20E0      		ldi r18,lo8(0)
+ 146 0004 30E0      		ldi r19,hi8(0)
+ 147 0006 00C0      		rjmp .L36
+ 148               	.L39:
+ 149 0008 5F9B      		sbis 43-32,7
+ 150 000a 00C0      		rjmp .L39
+ 151 000c 8CB1      		in r24,44-32
+ 152 000e FA01      		movw r30,r20
+ 153 0010 E20F      		add r30,r18
+ 154 0012 F31F      		adc r31,r19
+ 155 0014 8083      		st Z,r24
+ 156 0016 2F5F      		subi r18,lo8(-(1))
+ 157 0018 3F4F      		sbci r19,hi8(-(1))
+ 158               	.L36:
+ 159 001a 2617      		cp r18,r22
+ 160 001c 3707      		cpc r19,r23
+ 161 001e 00F0      		brlo .L39
+ 162               	/* epilogue start */
+ 163 0020 0895      		ret
+ 164               		.size	uart0_rec_buff_boot, .-uart0_rec_buff_boot
+ 165               		.data
+ 166               	.LC0:
+ 167 0000 0D0A 4574 		.string	"\r\nEthernet name = %s\r\n"
+ 167      6865 726E 
+ 167      6574 206E 
+ 167      616D 6520 
+ 167      3D20 2573 
+GAS LISTING C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s 			page 4
+
+
+ 168               	.LC1:
+ 169 0017 4D41 4320 		.string	"MAC address   = %02X:%02X:%02X:%02X:%02X:%02X\r\n"
+ 169      6164 6472 
+ 169      6573 7320 
+ 169      2020 3D20 
+ 169      2530 3258 
+ 170               	.LC2:
+ 171 0047 4950 2061 		.string	"IP address    = %s\r\n"
+ 171      6464 7265 
+ 171      7373 2020 
+ 171      2020 3D20 
+ 171      2573 0D0A 
+ 172               	.LC3:
+ 173 005c 4950 206D 		.string	"IP mask       = %s\r\n"
+ 173      6173 6B20 
+ 173      2020 2020 
+ 173      2020 3D20 
+ 173      2573 0D0A 
+ 174               	.LC4:
+ 175 0071 4757 2049 		.string	"GW IP address = %s\r\n"
+ 175      5020 6164 
+ 175      6472 6573 
+ 175      7320 3D20 
+ 175      2573 0D0A 
+ 176               		.section	.text.PrintNetworkParam,"ax",@progbits
+ 177               	.global	PrintNetworkParam
+ 178               		.type	PrintNetworkParam, @function
+ 179               	PrintNetworkParam:
+ 180               	/* prologue: function */
+ 181               	/* frame size = 0 */
+ 182 0000 00D0      		rcall .
+ 183 0002 00D0      		rcall .
+ 184 0004 80E0      		ldi r24,lo8(.LC0)
+ 185 0006 90E0      		ldi r25,hi8(.LC0)
+ 186 0008 ADB7      		in r26,__SP_L__
+ 187 000a BEB7      		in r27,__SP_H__
+ 188 000c 1296      		adiw r26,1+1
+ 189 000e 9C93      		st X,r25
+ 190 0010 8E93      		st -X,r24
+ 191 0012 1197      		sbiw r26,1
+ 192 0014 80E0      		ldi r24,lo8(confnet+1)
+ 193 0016 90E0      		ldi r25,hi8(confnet+1)
+ 194 0018 1496      		adiw r26,3+1
+ 195 001a 9C93      		st X,r25
+ 196 001c 8E93      		st -X,r24
+ 197 001e 1397      		sbiw r26,3
+ 198 0020 0E94 0000 		call printf
+ 199 0024 EDB7      		in r30,__SP_L__
+ 200 0026 FEB7      		in r31,__SP_H__
+ 201 0028 3A97      		sbiw r30,10
+ 202 002a 0FB6      		in __tmp_reg__,__SREG__
+ 203 002c F894      		cli
+ 204 002e FEBF      		out __SP_H__,r31
+ 205 0030 0FBE      		out __SREG__,__tmp_reg__
+ 206 0032 EDBF      		out __SP_L__,r30
+ 207 0034 3196      		adiw r30,1
+ 208 0036 80E0      		ldi r24,lo8(.LC1)
+GAS LISTING C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s 			page 5
+
+
+ 209 0038 90E0      		ldi r25,hi8(.LC1)
+ 210 003a ADB7      		in r26,__SP_L__
+ 211 003c BEB7      		in r27,__SP_H__
+ 212 003e 1296      		adiw r26,1+1
+ 213 0040 9C93      		st X,r25
+ 214 0042 8E93      		st -X,r24
+ 215 0044 1197      		sbiw r26,1
+ 216 0046 8091 0000 		lds r24,confnet+10
+ 217 004a 8283      		std Z+2,r24
+ 218 004c 1382      		std Z+3,__zero_reg__
+ 219 004e 8091 0000 		lds r24,confnet+11
+ 220 0052 8483      		std Z+4,r24
+ 221 0054 1582      		std Z+5,__zero_reg__
+ 222 0056 8091 0000 		lds r24,confnet+12
+ 223 005a 8683      		std Z+6,r24
+ 224 005c 1782      		std Z+7,__zero_reg__
+ 225 005e 8091 0000 		lds r24,confnet+13
+ 226 0062 8087      		std Z+8,r24
+ 227 0064 1186      		std Z+9,__zero_reg__
+ 228 0066 8091 0000 		lds r24,confnet+14
+ 229 006a 8287      		std Z+10,r24
+ 230 006c 1386      		std Z+11,__zero_reg__
+ 231 006e 8091 0000 		lds r24,confnet+15
+ 232 0072 8487      		std Z+12,r24
+ 233 0074 1586      		std Z+13,__zero_reg__
+ 234 0076 0E94 0000 		call printf
+ 235 007a EDB7      		in r30,__SP_L__
+ 236 007c FEB7      		in r31,__SP_H__
+ 237 007e 3E96      		adiw r30,14
+ 238 0080 0FB6      		in __tmp_reg__,__SREG__
+ 239 0082 F894      		cli
+ 240 0084 FEBF      		out __SP_H__,r31
+ 241 0086 0FBE      		out __SREG__,__tmp_reg__
+ 242 0088 EDBF      		out __SP_L__,r30
+ 243 008a 6091 0000 		lds r22,confnet+16
+ 244 008e 7091 0000 		lds r23,(confnet+16)+1
+ 245 0092 8091 0000 		lds r24,(confnet+16)+2
+ 246 0096 9091 0000 		lds r25,(confnet+16)+3
+ 247 009a 0E94 0000 		call inet_ntoa
+ 248 009e 00D0      		rcall .
+ 249 00a0 00D0      		rcall .
+ 250 00a2 20E0      		ldi r18,lo8(.LC2)
+ 251 00a4 30E0      		ldi r19,hi8(.LC2)
+ 252 00a6 ADB7      		in r26,__SP_L__
+ 253 00a8 BEB7      		in r27,__SP_H__
+ 254 00aa 1296      		adiw r26,1+1
+ 255 00ac 3C93      		st X,r19
+ 256 00ae 2E93      		st -X,r18
+ 257 00b0 1197      		sbiw r26,1
+ 258 00b2 1496      		adiw r26,3+1
+ 259 00b4 9C93      		st X,r25
+ 260 00b6 8E93      		st -X,r24
+ 261 00b8 1397      		sbiw r26,3
+ 262 00ba 0E94 0000 		call printf
+ 263 00be 0F90      		pop __tmp_reg__
+ 264 00c0 0F90      		pop __tmp_reg__
+ 265 00c2 0F90      		pop __tmp_reg__
+GAS LISTING C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s 			page 6
+
+
+ 266 00c4 0F90      		pop __tmp_reg__
+ 267 00c6 6091 0000 		lds r22,confnet+20
+ 268 00ca 7091 0000 		lds r23,(confnet+20)+1
+ 269 00ce 8091 0000 		lds r24,(confnet+20)+2
+ 270 00d2 9091 0000 		lds r25,(confnet+20)+3
+ 271 00d6 0E94 0000 		call inet_ntoa
+ 272 00da 00D0      		rcall .
+ 273 00dc 00D0      		rcall .
+ 274 00de 20E0      		ldi r18,lo8(.LC3)
+ 275 00e0 30E0      		ldi r19,hi8(.LC3)
+ 276 00e2 EDB7      		in r30,__SP_L__
+ 277 00e4 FEB7      		in r31,__SP_H__
+ 278 00e6 3283      		std Z+2,r19
+ 279 00e8 2183      		std Z+1,r18
+ 280 00ea 9483      		std Z+4,r25
+ 281 00ec 8383      		std Z+3,r24
+ 282 00ee 0E94 0000 		call printf
+ 283 00f2 0F90      		pop __tmp_reg__
+ 284 00f4 0F90      		pop __tmp_reg__
+ 285 00f6 0F90      		pop __tmp_reg__
+ 286 00f8 0F90      		pop __tmp_reg__
+ 287 00fa 6091 0000 		lds r22,confnet+24
+ 288 00fe 7091 0000 		lds r23,(confnet+24)+1
+ 289 0102 8091 0000 		lds r24,(confnet+24)+2
+ 290 0106 9091 0000 		lds r25,(confnet+24)+3
+ 291 010a 0E94 0000 		call inet_ntoa
+ 292 010e 00D0      		rcall .
+ 293 0110 00D0      		rcall .
+ 294 0112 20E0      		ldi r18,lo8(.LC4)
+ 295 0114 30E0      		ldi r19,hi8(.LC4)
+ 296 0116 ADB7      		in r26,__SP_L__
+ 297 0118 BEB7      		in r27,__SP_H__
+ 298 011a 1296      		adiw r26,1+1
+ 299 011c 3C93      		st X,r19
+ 300 011e 2E93      		st -X,r18
+ 301 0120 1197      		sbiw r26,1
+ 302 0122 1496      		adiw r26,3+1
+ 303 0124 9C93      		st X,r25
+ 304 0126 8E93      		st -X,r24
+ 305 0128 1397      		sbiw r26,3
+ 306 012a 0E94 0000 		call printf
+ 307 012e 0F90      		pop __tmp_reg__
+ 308 0130 0F90      		pop __tmp_reg__
+ 309 0132 0F90      		pop __tmp_reg__
+ 310 0134 0F90      		pop __tmp_reg__
+ 311               	/* epilogue start */
+ 312 0136 0895      		ret
+ 313               		.size	PrintNetworkParam, .-PrintNetworkParam
+ 314               		.data
+ 315               	.LC5:
+ 316 0086 7561 7274 		.string	"uart1"
+ 316      3100 
+ 317               	.LC6:
+ 318 008c 722B 6200 		.string	"r+b"
+ 319               	.LC7:
+ 320 0090 7561 7274 		.string	"uart0"
+ 320      3000 
+GAS LISTING C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s 			page 7
+
+
+ 321               		.section	.text.initUart,"ax",@progbits
+ 322               	.global	initUart
+ 323               		.type	initUart, @function
+ 324               	initUart:
+ 325 0000 FF92      		push r15
+ 326 0002 0F93      		push r16
+ 327 0004 1F93      		push r17
+ 328 0006 DF93      		push r29
+ 329 0008 CF93      		push r28
+ 330 000a CDB7      		in r28,__SP_L__
+ 331 000c DEB7      		in r29,__SP_H__
+ 332 000e 2897      		sbiw r28,8
+ 333 0010 0FB6      		in __tmp_reg__,__SREG__
+ 334 0012 F894      		cli
+ 335 0014 DEBF      		out __SP_H__,r29
+ 336 0016 0FBE      		out __SREG__,__tmp_reg__
+ 337 0018 CDBF      		out __SP_L__,r28
+ 338               	/* prologue: function */
+ 339               	/* frame size = 8 */
+ 340 001a F82E      		mov r15,r24
+ 341 001c 4983      		std Y+1,r20
+ 342 001e 5A83      		std Y+2,r21
+ 343 0020 6B83      		std Y+3,r22
+ 344 0022 7C83      		std Y+4,r23
+ 345 0024 0D83      		std Y+5,r16
+ 346 0026 1E83      		std Y+6,r17
+ 347 0028 2F83      		std Y+7,r18
+ 348 002a 3887      		std Y+8,r19
+ 349 002c 8823      		tst r24
+ 350 002e 01F4      		brne .L44
+ 351 0030 80E0      		ldi r24,lo8(devUsartAvr0)
+ 352 0032 90E0      		ldi r25,hi8(devUsartAvr0)
+ 353 0034 00C0      		rjmp .L45
+ 354               	.L44:
+ 355 0036 80E0      		ldi r24,lo8(devUsartAvr1)
+ 356 0038 90E0      		ldi r25,hi8(devUsartAvr1)
+ 357               	.L45:
+ 358 003a 60E0      		ldi r22,lo8(0)
+ 359 003c 70E0      		ldi r23,hi8(0)
+ 360 003e 40E0      		ldi r20,lo8(0)
+ 361 0040 0E94 0000 		call NutRegisterDevice
+ 362 0044 892B      		or r24,r25
+ 363 0046 01F0      		breq .+2
+ 364 0048 00C0      		rjmp .L46
+ 365 004a FF20      		tst r15
+ 366 004c 01F0      		breq .L47
+ 367 004e 80E0      		ldi r24,lo8(.LC5)
+ 368 0050 90E0      		ldi r25,hi8(.LC5)
+ 369 0052 60E0      		ldi r22,lo8(.LC6)
+ 370 0054 70E0      		ldi r23,hi8(.LC6)
+ 371 0056 0E94 0000 		call fopen
+ 372 005a 9093 0000 		sts (uartFile1)+1,r25
+ 373 005e 8093 0000 		sts uartFile1,r24
+ 374 0062 0097      		sbiw r24,0
+ 375 0064 01F0      		breq .L46
+ 376 0066 00C0      		rjmp .L54
+ 377               	.L47:
+GAS LISTING C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s 			page 8
+
+
+ 378 0068 80E0      		ldi r24,lo8(.LC7)
+ 379 006a 90E0      		ldi r25,hi8(.LC7)
+ 380 006c 60E0      		ldi r22,lo8(.LC6)
+ 381 006e 70E0      		ldi r23,hi8(.LC6)
+ 382 0070 0E94 0000 		call fopen
+ 383 0074 9093 0000 		sts (uartFile0)+1,r25
+ 384 0078 8093 0000 		sts uartFile0,r24
+ 385 007c 0E94 0000 		call _fileno
+ 386 0080 61E0      		ldi r22,lo8(257)
+ 387 0082 71E0      		ldi r23,hi8(257)
+ 388 0084 AE01      		movw r20,r28
+ 389 0086 4F5F      		subi r20,lo8(-(1))
+ 390 0088 5F4F      		sbci r21,hi8(-(1))
+ 391 008a 0E94 0000 		call _ioctl
+ 392 008e 8091 0000 		lds r24,uartFile0
+ 393 0092 9091 0000 		lds r25,(uartFile0)+1
+ 394 0096 00C0      		rjmp .L53
+ 395               	.L54:
+ 396 0098 0E94 0000 		call _fileno
+ 397 009c 61E0      		ldi r22,lo8(257)
+ 398 009e 71E0      		ldi r23,hi8(257)
+ 399 00a0 AE01      		movw r20,r28
+ 400 00a2 4F5F      		subi r20,lo8(-(1))
+ 401 00a4 5F4F      		sbci r21,hi8(-(1))
+ 402 00a6 0E94 0000 		call _ioctl
+ 403 00aa 8091 0000 		lds r24,uartFile1
+ 404 00ae 9091 0000 		lds r25,(uartFile1)+1
+ 405               	.L53:
+ 406 00b2 0E94 0000 		call _fileno
+ 407 00b6 6BE0      		ldi r22,lo8(267)
+ 408 00b8 71E0      		ldi r23,hi8(267)
+ 409 00ba AE01      		movw r20,r28
+ 410 00bc 4B5F      		subi r20,lo8(-(5))
+ 411 00be 5F4F      		sbci r21,hi8(-(5))
+ 412 00c0 0E94 0000 		call _ioctl
+ 413 00c4 892B      		or r24,r25
+ 414 00c6 01F4      		brne .L46
+ 415 00c8 20E0      		ldi r18,lo8(0)
+ 416 00ca 30E0      		ldi r19,hi8(0)
+ 417 00cc 00C0      		rjmp .L50
+ 418               	.L46:
+ 419 00ce 2FEF      		ldi r18,lo8(-1)
+ 420 00d0 3FEF      		ldi r19,hi8(-1)
+ 421               	.L50:
+ 422 00d2 C901      		movw r24,r18
+ 423               	/* epilogue start */
+ 424 00d4 2896      		adiw r28,8
+ 425 00d6 0FB6      		in __tmp_reg__,__SREG__
+ 426 00d8 F894      		cli
+ 427 00da DEBF      		out __SP_H__,r29
+ 428 00dc 0FBE      		out __SREG__,__tmp_reg__
+ 429 00de CDBF      		out __SP_L__,r28
+ 430 00e0 CF91      		pop r28
+ 431 00e2 DF91      		pop r29
+ 432 00e4 1F91      		pop r17
+ 433 00e6 0F91      		pop r16
+ 434 00e8 FF90      		pop r15
+GAS LISTING C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s 			page 9
+
+
+ 435 00ea 0895      		ret
+ 436               		.size	initUart, .-initUart
+ 437               	.global	uartFile0
+ 438               	.global	uartFile0
+ 439               		.section .bss
+ 440               		.type	uartFile0, @object
+ 441               		.size	uartFile0, 2
+ 442               	uartFile0:
+ 443 0000 0000      		.skip 2,0
+ 444               	.global	uartFile1
+ 445               	.global	uartFile1
+ 446               		.type	uartFile1, @object
+ 447               		.size	uartFile1, 2
+ 448               	uartFile1:
+ 449 0002 0000      		.skip 2,0
+ 450               	.global __do_copy_data
+ 451               	.global __do_clear_bss
+GAS LISTING C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 uart.c
+C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s:2      *ABS*:0000003f __SREG__
+C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s:3      *ABS*:0000003e __SP_H__
+C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s:4      *ABS*:0000003d __SP_L__
+C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s:5      *ABS*:00000034 __CCP__
+C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s:11     .uartloader:00000000 uart0_send
+C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s:23     .uartloader:00000008 uart0_rec
+C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s:35     .uartloader:00000010 uart0_send_buff
+C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s:61     .uartloader:00000030 uart0_rec_buff
+C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s:88     .text.uart0_send_boot:00000000 uart0_send_boot
+C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s:101    .text.uart0_rec_boot:00000000 uart0_rec_boot
+C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s:114    .text.uart0_send_buff_boot:00000000 uart0_send_buff_boot
+C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s:141    .text.uart0_rec_buff_boot:00000000 uart0_rec_buff_boot
+C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s:179    .text.PrintNetworkParam:00000000 PrintNetworkParam
+C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s:324    .text.initUart:00000000 initUart
+C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s:448    .bss:00000002 uartFile1
+C:\Users\hag\AppData\Local\Temp/ccQJGMzp.s:442    .bss:00000000 uartFile0
+
+UNDEFINED SYMBOLS
+confnet
+printf
+inet_ntoa
+devUsartAvr0
+devUsartAvr1
+NutRegisterDevice
+fopen
+_fileno
+_ioctl
+__do_copy_data
+__do_clear_bss
