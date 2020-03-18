@@ -1,1 +1,4 @@
 *.pnproj
+*.lst
+*.hex
+*.map
