@@ -73,6 +73,9 @@
 #define CMD_INI_RD				"ini_read\r\n"			//write ini offset 0 length 480
 	// ANSWER_ERROR							- BAD
 	
+#define CMD_INI_SIZE            "ini_size\r\n"
+    // 800  
+	// ANSWER_ERROR                         - if 480
 
 #define CMD_START_FLASH_PROCEDURE	"\x13\x13\x13\x13\x13\x13"
 
@@ -88,5 +91,6 @@
 #define ANSWER_NO					"NO\r\n"
 #define ANSWER_ERROR				"ERROR\r\n"
 #define ANSWER_ERROR_COMMAND		"ERROR_COMMAND\r\n"
+#define ANSWER_INI_SIZE             "800\r\n" 
 
 #endif	// ___COMMANDS___H___

@@ -1,4 +1,4 @@
-GAS LISTING C:\Users\hag\AppData\Local\Temp/cckX4p3g.s 			page 1
+GAS LISTING C:\Users\hag\AppData\Local\Temp/ccWLD2TL.s 			page 1
 
 
    1               		.file	"dallas.c"
@@ -58,7 +58,7 @@ GAS LISTING C:\Users\hag\AppData\Local\Temp/cckX4p3g.s 			page 1
   55 0032 0895      		ret
   56               	.L2:
   57 0034 8095      		com r24
-GAS LISTING C:\Users\hag\AppData\Local\Temp/cckX4p3g.s 			page 2
+GAS LISTING C:\Users\hag\AppData\Local\Temp/ccWLD2TL.s 			page 2
 
 
   58 0036 881F      		rol r24
@@ -118,7 +118,7 @@ GAS LISTING C:\Users\hag\AppData\Local\Temp/cckX4p3g.s 			page 1
  112 003a 3F4F      		sbci r19,hi8(-(1))
  113 003c 2830      		cpi r18,8
  114 003e 3105      		cpc r19,__zero_reg__
-GAS LISTING C:\Users\hag\AppData\Local\Temp/cckX4p3g.s 			page 3
+GAS LISTING C:\Users\hag\AppData\Local\Temp/ccWLD2TL.s 			page 3
 
 
  115 0040 01F4      		brne .L8
@@ -178,7 +178,7 @@ GAS LISTING C:\Users\hag\AppData\Local\Temp/cckX4p3g.s 			page 1
  169               	ds_read_rom_command:
  170 0000 0F93      		push r16
  171 0002 1F93      		push r17
-GAS LISTING C:\Users\hag\AppData\Local\Temp/cckX4p3g.s 			page 4
+GAS LISTING C:\Users\hag\AppData\Local\Temp/ccWLD2TL.s 			page 4
 
 
  172 0004 CF93      		push r28
@@ -238,7 +238,7 @@ GAS LISTING C:\Users\hag\AppData\Local\Temp/cckX4p3g.s 			page 1
  226 0012 1F93      		push r17
  227 0014 DF93      		push r29
  228 0016 CF93      		push r28
-GAS LISTING C:\Users\hag\AppData\Local\Temp/cckX4p3g.s 			page 5
+GAS LISTING C:\Users\hag\AppData\Local\Temp/ccWLD2TL.s 			page 5
 
 
  229 0018 CDB7      		in r28,__SP_L__
@@ -298,7 +298,7 @@ GAS LISTING C:\Users\hag\AppData\Local\Temp/cckX4p3g.s 			page 1
  283 0082 5070      		andi r21,hi8(7)
  284 0084 942F      		mov r25,r20
  285 0086 8827      		clr r24
-GAS LISTING C:\Users\hag\AppData\Local\Temp/cckX4p3g.s 			page 6
+GAS LISTING C:\Users\hag\AppData\Local\Temp/ccWLD2TL.s 			page 6
 
 
  286 0088 820F      		add r24,r18
@@ -358,7 +358,7 @@ GAS LISTING C:\Users\hag\AppData\Local\Temp/cckX4p3g.s 			page 1
  340 0016 F801      		movw r30,r16
  341 0018 8081      		ld r24,Z
  342 001a 0E94 0000 		call ds_shout
-GAS LISTING C:\Users\hag\AppData\Local\Temp/cckX4p3g.s 			page 7
+GAS LISTING C:\Users\hag\AppData\Local\Temp/ccWLD2TL.s 			page 7
 
 
  343 001e F801      		movw r30,r16
@@ -372,23 +372,23 @@ GAS LISTING C:\Users\hag\AppData\Local\Temp/cckX4p3g.s 			page 1
  351 0030 0F91      		pop r16
  352 0032 0895      		ret
  353               		.size	ds_set_resolution, .-ds_set_resolution
-GAS LISTING C:\Users\hag\AppData\Local\Temp/cckX4p3g.s 			page 8
+GAS LISTING C:\Users\hag\AppData\Local\Temp/ccWLD2TL.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 dallas.c
-C:\Users\hag\AppData\Local\Temp/cckX4p3g.s:2      *ABS*:0000003f __SREG__
-C:\Users\hag\AppData\Local\Temp/cckX4p3g.s:3      *ABS*:0000003e __SP_H__
-C:\Users\hag\AppData\Local\Temp/cckX4p3g.s:4      *ABS*:0000003d __SP_L__
-C:\Users\hag\AppData\Local\Temp/cckX4p3g.s:5      *ABS*:00000034 __CCP__
-C:\Users\hag\AppData\Local\Temp/cckX4p3g.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\hag\AppData\Local\Temp/cckX4p3g.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\hag\AppData\Local\Temp/cckX4p3g.s:11     .text.ds_reset:00000000 ds_reset
-C:\Users\hag\AppData\Local\Temp/cckX4p3g.s:66     .text.ds_shout:00000000 ds_shout
-C:\Users\hag\AppData\Local\Temp/cckX4p3g.s:122    .text.ds_shin:00000000 ds_shin
-C:\Users\hag\AppData\Local\Temp/cckX4p3g.s:169    .text.ds_read_rom_command:00000000 ds_read_rom_command
-C:\Users\hag\AppData\Local\Temp/cckX4p3g.s:202    .text.ds_convert_temperature_command:00000000 ds_convert_temperature_command
-C:\Users\hag\AppData\Local\Temp/cckX4p3g.s:216    .text.ds_read_temperature_command:00000000 ds_read_temperature_command
-C:\Users\hag\AppData\Local\Temp/cckX4p3g.s:329    .text.ds_set_resolution:00000000 ds_set_resolution
+C:\Users\hag\AppData\Local\Temp/ccWLD2TL.s:2      *ABS*:0000003f __SREG__
+C:\Users\hag\AppData\Local\Temp/ccWLD2TL.s:3      *ABS*:0000003e __SP_H__
+C:\Users\hag\AppData\Local\Temp/ccWLD2TL.s:4      *ABS*:0000003d __SP_L__
+C:\Users\hag\AppData\Local\Temp/ccWLD2TL.s:5      *ABS*:00000034 __CCP__
+C:\Users\hag\AppData\Local\Temp/ccWLD2TL.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\hag\AppData\Local\Temp/ccWLD2TL.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\hag\AppData\Local\Temp/ccWLD2TL.s:11     .text.ds_reset:00000000 ds_reset
+C:\Users\hag\AppData\Local\Temp/ccWLD2TL.s:66     .text.ds_shout:00000000 ds_shout
+C:\Users\hag\AppData\Local\Temp/ccWLD2TL.s:122    .text.ds_shin:00000000 ds_shin
+C:\Users\hag\AppData\Local\Temp/ccWLD2TL.s:169    .text.ds_read_rom_command:00000000 ds_read_rom_command
+C:\Users\hag\AppData\Local\Temp/ccWLD2TL.s:202    .text.ds_convert_temperature_command:00000000 ds_convert_temperature_command
+C:\Users\hag\AppData\Local\Temp/ccWLD2TL.s:216    .text.ds_read_temperature_command:00000000 ds_read_temperature_command
+C:\Users\hag\AppData\Local\Temp/ccWLD2TL.s:329    .text.ds_set_resolution:00000000 ds_set_resolution
 
 NO UNDEFINED SYMBOLS
