@@ -53,7 +53,7 @@
 #define EEPROM_SWITCH_STATE			0x105
 
 #define EEPROM_INI					0x109		// adr ini- file
-#define EEPROM_INI_LEN				800         // size ini- file (800 for 28 bop)
+#define EEPROM_INI_LEN				767         // size ini- file (767 for 28 bop)
 
 #define NEW_PROGRAM_FLASH_ADDRESS	0x10000
 #define MAX_NEW_PROGRAM_SIZE		0xF000

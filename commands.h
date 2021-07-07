@@ -91,6 +91,6 @@
 #define ANSWER_NO					"NO\r\n"
 #define ANSWER_ERROR				"ERROR\r\n"
 #define ANSWER_ERROR_COMMAND		"ERROR_COMMAND\r\n"
-#define ANSWER_INI_SIZE             "800\r\n" 
+#define ANSWER_INI_SIZE             "767\r\n" 
 
 #endif	// ___COMMANDS___H___

@@ -2,3 +2,6 @@
 *.lst
 *.hex
 *.map
+/dallas.lst
+/network.o
+/services.o

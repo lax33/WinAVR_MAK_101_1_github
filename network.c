@@ -473,7 +473,7 @@ void loopNetwork(void)
 //						printf("--- CMD_INI_RD, cnt = %d\r\n", tmp);
 					} while (tmp != EEPROM_INI_LEN);	
 				}
-				else if (!strncmp(buff, CMD_INI_SIZE, strlen(CMD_INI_SIZE)))   // запрос размера ini-файла ("800\r\n" если если размер 800, если 480 "ERROR_COMMAND\r\n\"
+				else if (!strncmp(buff, CMD_INI_SIZE, strlen(CMD_INI_SIZE)))   // запрос размера ini-файла ("767\r\n" если если размер 767, если 480 "ERROR_COMMAND\r\n\"
 				{
 					fwrite(ANSWER_INI_SIZE, 1, strlen(ANSWER_INI_SIZE), ethTelnetFile);
 				}
