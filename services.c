@@ -243,8 +243,36 @@ void otau_init(void)
 
 u_char otau_reset(void)
 {
-	fwrite("reset\r\n", 1, 7, uartFile1);
-	return 0x01;
+	int cnt = 0;
+	char str[10] = "";
+	//char anw[10] = "<RESET_OK>";
+	//int i;
+	//fwrite("reset\r\n", 1, 7, uartFile1);
+	
+	fwrite("<RESET>", 1, 7, uartFile1);
+	
+	_delay_loop_2(60000);
+	
+	cnt = fread(str, 1, 10, uartFile1);
+	
+	printf("--- OTAU_ANSWER_RESET - %s\r\n", str);
+	
+	//for (i = 0; i < 10; i++)
+	//{
+		//if(str[i] != anw[i])
+		//{
+			//return 0x00;
+		//}
+	//}
+	
+	//return 0x01;
+	
+	if(cnt > 0)
+	{
+		return 0x01;
+	}
+	
+	return 0x00;
 }
 
 u_char otau_get_count_channels(void)
