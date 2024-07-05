@@ -40,7 +40,7 @@ int main(void)
 	// регистрация и инициализация UART0, UART1
 	if (initUart(0, 115200, 0))
 		printf("-- Registering UART0 failed\n\r");
-	if (initUart(1, 57600, 800))
+	if (initUart(1, 115200, 800))
 		printf("-- Registering UART1 failed\n\r");
 	
 	if (get_rtu_number() == 0xFFFFFF)

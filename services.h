@@ -3,6 +3,9 @@
 
 #include <sys/thread.h>		// for THREAD-type
 
+#include <ctype.h>			//    for func
+#include <stdio.h>          //  my_strnicmp()
+
 #define PC_POWER_LED_DDR			DDRD
 #define PC_POWER_LED_OUT			PORTD
 #define PC_POWER_LED_IN				PIND
@@ -144,6 +147,8 @@ u_char otau_get_channel(void);
 u_char otau_get_count_channels(void);
 
 u_char otau_check_alive(void);
+
+int my_strnicmp(const char *s1, const char *s2, size_t n);
 
 //****************
 // управление OTDR
