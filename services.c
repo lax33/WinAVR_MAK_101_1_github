@@ -418,12 +418,12 @@ u_char otau_get_channel(void)
 	// <OSW_A_001> - otau's answer
 	//        -3- signs of the number channel
 
-	//if (otau_get_count_channels() == 1)
-		//{
-			//return 0x01;
-		//}
-		//else
-		//{
+	if (otau_get_count_channels() == 1)
+		{
+			return 0x01;
+		}
+		else
+		{
 			printf("--- _COMMAND - %s\r\n", comm);	
 	
 			fwrite(comm, 1, 9, uartFile1);
@@ -443,7 +443,7 @@ u_char otau_get_channel(void)
 				}
 	
 			return 0xFF;
-		//}
+		}
 	
 	
 	// old code
