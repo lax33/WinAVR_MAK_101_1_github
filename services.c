@@ -221,8 +221,9 @@ void otau_init(void)
 	char cnt_channel_str[2];
 	char otau_type[7];
 	char orig_type[] = "HC-MEMS";
-	char *pnt = str + 12;
+	char *pnt = str + 12; // указатель на число каналов в ответе otau
 	
+	// ответ otau
 	// <HC-MEMS-1ЎБ4-S-162-M3-9-90-10-FA_VER3.11_SN20240507009_ 01.08.0488>
 	// <HC-MEMS-1ЎБ28-S-162-M3-9-90-10-FA_VER3.11_SN20240507001_ 01.08.2416>
 	//            12,13 count channels
@@ -237,12 +238,12 @@ void otau_init(void)
 	
 	cnt = fread(str, 1, 69, uartFile1);
 			
-	printf("--- _otau_answer_cnt-:%d\r\n", cnt);
-	printf("--- _otau_answer_cnt_channel_str-:%s\r\n", str);	
+	//printf("--- _otau_answer_cnt-:%d\r\n", cnt);                // debug
+	//printf("--- _otau_answer_cnt_channel_str-:%s\r\n", str);    // debug 	
 	
 	if (!cnt)
 	{
-		printf("--- otau_count_channels1 - 1\r\n");
+		printf("--- otau_initialization_ERR\r\n");
 		otau_count_channels = 0x01;
 		return;
 	}	
@@ -251,14 +252,14 @@ void otau_init(void)
 	
 	if (0 != my_strnicmp(otau_type, orig_type, 7))
 	{
-		printf("--- otau_count_channels2 - 1\r\n");
+		printf("--- 1_otau_initialization_ERR\r\n");
 		otau_count_channels = 0x01;
 		return;
 	}
 	
 	strncpy(cnt_channel_str, pnt, 2);	
 	
-	printf("--- _otau_cnt_channel_str-:%s\r\n", cnt_channel_str);
+	//printf("--- _otau_cnt_channel_str-:%s\r\n", cnt_channel_str);    // debug
 		
 	sscanf(cnt_channel_str, "%hhu", &otau_count_channels);
 	
@@ -266,46 +267,18 @@ void otau_init(void)
 	
 	NutSleep(500);
 	
-	printf("--- otau_initialization ok %c\r\n", otau_count_channels);	
-	
-		// old code
-
-	//char str_blind[] = "chb\r\n";
-	//char str[15] = "type?\r\n";
-	//int cnt, ret_val;
-
-	//NutSleep(1000);
-
-	//otau_reset();
-	//NutSleep(2500);
-
-	//fwrite(str_blind, 1, strlen(str_blind), uartFile1);
-	//_delay_loop_2(60000);
-	//_delay_loop_2(60000);
-	//fwrite(str, 1, strlen(str), uartFile1);
-	//_delay_loop_2(60000);
-	//_delay_loop_2(60000);
-	//cnt = fread(str, 1, 15, uartFile1);
-    //str[cnt] = 0x00;
-	//if (cnt)
-	//{
-		//sscanf(&str[6], "%d\r\n", &ret_val);
-		//otau_count_channels = (u_char)ret_val;
-		//if (str[cnt - 3] == 'b')
-			//otau_count_channels |= OTAU_CAN_BLIND;
-	//}
+	//printf("--- otau_initialization ok %c\r\n", otau_count_channels);	   // debug		
 }
 
 u_char otau_reset(void)
 {
+	int result;
 	char str[22];
 	char str_answer[8];
 	char comm[] = "<RESET>";
-	char answ[] = "<RESET_OK>";
+	char answ[] = "<RESET_OK>";	
 	
-	
-	printf("--- _COMMAND - %s\r\n", comm);
-	
+	//printf("--- _COMMAND - %s\r\n", comm);	// debug
 	
 	fwrite(comm, 1, 7, uartFile1);	
 	
@@ -313,25 +286,29 @@ u_char otau_reset(void)
 	
 	int cnt = fread(str, 1, 22, uartFile1);
 	
+	if (!cnt)
+	{
+		printf("--- _reset_ERR\r\n");
+		return 0x00;
+	}	
 	
-	printf("--- _OTAU_ANSWER_RESET_CNT - %d\r\n", cnt);
-	printf("--- _OTAU_ANSWER_RESET_STR -:%s\r\n", str);
+	//printf("--- _OTAU_ANSWER_RESET_CNT - %d\r\n", cnt);		// debug
+	//printf("--- _OTAU_ANSWER_RESET_STR -:%s\r\n", str);		// debug
 	
 	strncpy(str_answer, str, 10); 
-
 		
-		int result = my_strnicmp(str_answer, answ, 10);
-		printf("--- result - %d\r\n", result);
-		printf("--- str_answer - %s\r\n", str_answer);
+		result = my_strnicmp(str_answer, answ, 10);
+		//printf("--- result - %d\r\n", result);				// debug
+		//printf("--- str_answer - %s\r\n", str_answer);		// debug
 		
 	
 	if(0 == my_strnicmp(str_answer, answ, 10))
 	{
-		printf("--- _RESET OK\r\n");
+		//printf("--- 1_reset_OK\r\n");							// debug
 		return 0x01;
 	}
 	
-	printf("--- _RESET ERR\r\n");
+	printf("--- 2_reset_ERR\r\n");
 	return 0x00;
 }
 
@@ -360,8 +337,8 @@ u_char otau_set_channel(u_char channel)
 			sprintf(comm, "<OSW_01_SW_0%d>", channel);
 		}
 		
-	// <OSW_01_SW_xxx>
-	// <OSW_01_SW_002_OK>
+	// <OSW_01_SW_xxx> - команда уст. порта 15- байт
+	// <OSW_01_SW_002_OK> - ответ otau 18 -байт
 	//                14,15 - signs (OK) 
 	
 		fwrite(comm, 1, 15, uartFile1);
@@ -370,42 +347,31 @@ u_char otau_set_channel(u_char channel)
 	
 		int cnt = fread(str, 1, 18, uartFile1);
 		
-		printf("--- _OTAU_SET_CHANNEL_CNT - %d\r\n", cnt);
-		printf("--- _OTAU_SET_CHANNEL_STR -:%s\r\n", str);
+		if (!cnt)
+		{
+			printf("--- set_channel_ERR\r\n");
+			return 0x00;
+		}	
+		
+		//printf("--- _OTAU_SET_CHANNEL_CNT - %d\r\n", cnt);		// debug
+		//printf("--- _OTAU_SET_CHANNEL_STR -:%s\r\n", str);		// debug
 	
 		strncpy(channel_str, pnt, 2);
 	
-		printf("--- _SET_CHANNEL_ANSWER_%s\r\n", channel_str);
+		//printf("--- _SET_CHANNEL_ANSWER_%s\r\n", channel_str);	// debug
 	
 		if (0 == my_strnicmp(channel_str, answer_set_chan_OK, 2))
 		{
-			printf("--- _SET_CHANNEL_OK\r\n");
+			//printf("--- set_channel_OK\r\n");						// debug
 			return 0x01;
 		}
-			printf("--- _SET_CHANNEL_ERR\r\n");
+			printf("--- 1_set_channel_ERR\r\n");
 			return 0x00;	
 	
 	}
 	
-	printf("--- _SET_CHANNEL_ERR\r\n");
-	return 0x00;
-	
-
-
-	// old code
-	//char str[10];
-
-	//if (channel <= ((~OTAU_CAN_BLIND) & otau_get_count_channels()))
-	//{
-		//sprintf(str, "ch%d\r\n", channel);
-		//fwrite(str, 1, strlen(str), uartFile1);
-			//_delay_loop_2(60000);
-			//_delay_loop_2(60000);
-		//old_tik = NutGetMillis(); 
-		//return 0x01;
-	//}
-	//else
-		//return 0x00;
+	printf("--- 2_set_channel_ERR\r\n");
+	return 0x00;	
 }
 
 u_char otau_get_channel(void)
@@ -415,6 +381,7 @@ u_char otau_get_channel(void)
 	char channel_str[3];
 	int channel;
 	char *pnt = str + 7;
+	int cnt = 0;
 	// <OSW_A_001> - otau's answer
 	//        -3- signs of the number channel
 
@@ -424,16 +391,16 @@ u_char otau_get_channel(void)
 		}
 		else
 		{
-			printf("--- _COMMAND - %s\r\n", comm);	
+			//printf("--- _COMMAND - %s\r\n", comm);					// debug	
 	
 			fwrite(comm, 1, 9, uartFile1);
 	
 			NutSleep(500);
 	
-			int cnt = fread(str, 1, 11, uartFile1);
+			cnt = fread(str, 1, 11, uartFile1);
 
-			printf("--- _OTAU_ANSWER_CHANNAL_CNT - %d\r\n", cnt);
-			printf("--- _OTAU_ANSWER_CHANNAL_STR -:%s\r\n", str);
+			//printf("--- _OTAU_ANSWER_CHANNAL_CNT - %d\r\n", cnt);		// debug
+			//printf("--- _OTAU_ANSWER_CHANNAL_STR -:%s\r\n", str);		// debug
 
 			strncpy(channel_str, pnt, 3);
 	
@@ -441,33 +408,10 @@ u_char otau_get_channel(void)
 				{
 					return channel;
 				}
-	
+			
+			printf("--- get_channel_ERR\r\n");
 			return 0xFF;
-		}
-	
-	
-	// old code
-	//char str[10] = "ch?\r\n";
-	//int cnt, ret_val;
-
-	//if (otau_get_count_channels() == 1)
-		//return 0x01;
-	//else
-	//{
-		//new_tik = NutGetMillis() - old_tik;
-		//if (new_tik < 700) NutSleep(700 - new_tik); 
-		//fwrite(str, 1, strlen(str), uartFile1);
-		//_delay_loop_2(60000);
-		//_delay_loop_2(60000);
-		//cnt = fread(str, 1, 10, uartFile1);
-		//str[cnt] = 0x00;
-		//if (cnt && sscanf(str, "%d\r\n", &ret_val))
-		//{
-			//return (u_char)ret_val;
-		//}
-		//else
-			//return 0xFF;
-	//}
+		}	
 }
 
 u_char otau_check_alive(void)
@@ -478,17 +422,18 @@ u_char otau_check_alive(void)
 		return 0x00;
 }
 
-int my_strnicmp(const char *s1, const char *s2, size_t n) {
-if (n == 0) return 0;
+int my_strnicmp(const char *s1, const char *s2, size_t n)  // сравнение двух строк, n знаков
+{
+	if (n == 0) return 0;
 
-do {
-if (tolower((unsigned char)*s1) != tolower((unsigned char)*s2++))
-return tolower((unsigned char)*s1) - tolower((unsigned char)*--s2);
-if (*s1++ == 0)
-break;
-} while (--n != 0);
+	do {
+	if (tolower((unsigned char)*s1) != tolower((unsigned char)*s2++))
+	return tolower((unsigned char)*s1) - tolower((unsigned char)*--s2);
+	if (*s1++ == 0)
+	break;
+	} while (--n != 0);
 
-return 0;
+	return 0;
 }
 
 //****************
