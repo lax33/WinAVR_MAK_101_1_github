@@ -380,8 +380,7 @@ u_char otau_get_channel(void)
 	char comm[] = "<OSW_A_?>";	
 	char channel_str[3];
 	int channel;
-	char *pnt = str + 7;
-	int cnt = 0;
+	char *pnt = str + 7;	
 	// <OSW_A_001> - otau's answer
 	//        -3- signs of the number channel
 
@@ -397,10 +396,16 @@ u_char otau_get_channel(void)
 	
 			NutSleep(500);
 	
-			cnt = fread(str, 1, 11, uartFile1);
+			int cnt = fread(str, 1, 11, uartFile1);
 
 			//printf("--- _OTAU_ANSWER_CHANNAL_CNT - %d\r\n", cnt);		// debug
 			//printf("--- _OTAU_ANSWER_CHANNAL_STR -:%s\r\n", str);		// debug
+			
+			if (!cnt)
+		{
+			printf("--- get_channel_ERR\r\n");
+			return 0xFF;
+		}	
 
 			strncpy(channel_str, pnt, 3);
 	
@@ -409,7 +414,7 @@ u_char otau_get_channel(void)
 					return channel;
 				}
 			
-			printf("--- get_channel_ERR\r\n");
+			printf("--- 1_get_channel_ERR\r\n");
 			return 0xFF;
 		}	
 }
