@@ -54,6 +54,7 @@
 //define PROGRAMM_VERSION	0x050D	//5.13 RTU_V5 (NutOS v 5.1, WinAVR 2010) + комм для АС + задержка между переклюбчением и вычитыванием порта + 24bit номер + INI + add BOP + meas command on 23 port + off time + remove last simbol NUM in DISPLEY + 7 simbols of number + ПОДКЛЮЧ.К OTDR + ОШИБКА с номером + СБРОС, нет "выкл МАК100...", нет "питание можно отключить" 
 //define PROGRAMM_VERSION	0x050E	//5.14 + подключение 28 боп
 #define PROGRAMM_VERSION	0x0601	//6.01 новый MEMS опт. переключатель
+#define PROGRAMM_VERSION	0x0601	//6.01 новый MEMS опт. переключатель и доб. возможность работать со старым ПО 1,5 и 1,3 
 
 // Ethernet - переменные
 u_char mac[] = {MYMAC};
@@ -102,6 +103,7 @@ void loopNetwork(void)
 	unsigned int d, f, port;
 	int cnt, bt, tmp;
 	char *buff;
+	unsigned int is_cmd_inisize = 0;
 
     haveConnectTelnet = 0;
     while (1) 
@@ -468,14 +470,25 @@ void loopNetwork(void)
 				{
 					read_ini((u_char *)buff);
 					tmp = 0;
+					
+					if (is_cmd_inisize ==1)
 					do
 					{
 						tmp += NutTcpSend(sockTelnet, buff + tmp, EEPROM_INI_LEN - tmp);
 //						printf("--- CMD_INI_RD, cnt = %d\r\n", tmp);
-					} while (tmp != EEPROM_INI_LEN);	
+					} while (tmp != EEPROM_INI_LEN);
+					else
+					{
+						do
+						{
+							tmp += NutTcpSend(sockTelnet, buff + tmp, EEPROM_INI_LEN_old - tmp);
+//							printf("--- CMD_INI_RD, cnt = %d\r\n", tmp);
+						} while (tmp != EEPROM_INI_LEN_old);
+					}
 				}
 				else if (!strncmp(buff, CMD_INI_SIZE, strlen(CMD_INI_SIZE)))   // запрос размера ini-файла ("767\r\n" если если размер 767, если 480 "ERROR_COMMAND\r\n\"
 				{
+					is_cmd_inisize = 1; // означает что команда ini_size была принята и тогда оазмер ини файла принемается за 767, в противном случае 448
 					fwrite(ANSWER_INI_SIZE, 1, strlen(ANSWER_INI_SIZE), ethTelnetFile);
 				}
 				else

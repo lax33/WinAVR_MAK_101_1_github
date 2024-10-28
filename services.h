@@ -57,6 +57,7 @@
 
 #define EEPROM_INI					0x109		// adr ini- file
 #define EEPROM_INI_LEN				767         // size ini- file (767 for 28 bop)
+#define EEPROM_INI_LEN_old			480			// for old soft, 1.5 and 1.3
 
 #define NEW_PROGRAM_FLASH_ADDRESS	0x10000
 #define MAX_NEW_PROGRAM_SIZE		0xF000
