@@ -53,8 +53,8 @@
 //#define PROGRAMM_VERSION	0x050C	// v5.12 RTU_V5 (NutOS v 5.1, WinAVR 2010) + комм для АС + задержка между переклюбчением и вычитыванием порта + 24bit номер + INI + add BOP + meas command on 23 port + off time + remove last simbol NUM in DISPLEY + 7 simbols of number + ПОДКЛЮЧ.К OTDR + ОШИБКА с номером
 //define PROGRAMM_VERSION	0x050D	//5.13 RTU_V5 (NutOS v 5.1, WinAVR 2010) + комм для АС + задержка между переклюбчением и вычитыванием порта + 24bit номер + INI + add BOP + meas command on 23 port + off time + remove last simbol NUM in DISPLEY + 7 simbols of number + ПОДКЛЮЧ.К OTDR + ОШИБКА с номером + СБРОС, нет "выкл МАК100...", нет "питание можно отключить" 
 //define PROGRAMM_VERSION	0x050E	//5.14 + подключение 28 боп
-#define PROGRAMM_VERSION	0x0601	//6.01 новый MEMS опт. переключатель
-#define PROGRAMM_VERSION	0x0601	//6.01 новый MEMS опт. переключатель и доб. возможность работать со старым ПО 1,5 и 1,3 
+//#define PROGRAMM_VERSION	0x0601	//6.01 новый MEMS опт. переключатель
+#define PROGRAMM_VERSION	0x0602	//6.02 новый MEMS опт. переключатель и доб. возможность работать со старым ПО 1,5 и 1,3 
 
 // Ethernet - переменные
 u_char mac[] = {MYMAC};
