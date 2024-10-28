@@ -103,7 +103,7 @@ void loopNetwork(void)
 	unsigned int d, f, port;
 	int cnt, bt, tmp;
 	char *buff;
-	unsigned int is_cmd_inisize = 0;
+	unsigned int is_cmd_inisize = 0; // for working with old soft (1,5, 1,3)
 
     haveConnectTelnet = 0;
     while (1) 
@@ -471,24 +471,29 @@ void loopNetwork(void)
 					read_ini((u_char *)buff);
 					tmp = 0;
 					
-					if (is_cmd_inisize ==1)
-					do
-					{
-						tmp += NutTcpSend(sockTelnet, buff + tmp, EEPROM_INI_LEN - tmp);
-//						printf("--- CMD_INI_RD, cnt = %d\r\n", tmp);
-					} while (tmp != EEPROM_INI_LEN);
-					else
+					if (is_cmd_inisize == 0)
 					{
 						do
 						{
 							tmp += NutTcpSend(sockTelnet, buff + tmp, EEPROM_INI_LEN_old - tmp);
 //							printf("--- CMD_INI_RD, cnt = %d\r\n", tmp);
-						} while (tmp != EEPROM_INI_LEN_old);
+						} while (tmp != EEPROM_INI_LEN_old);					
+						
+					}
+					else  // is_cmd_inisize = 1;	
+					{
+						do
+						{
+							tmp += NutTcpSend(sockTelnet, buff + tmp, EEPROM_INI_LEN - tmp);
+//							printf("--- CMD_INI_RD, cnt = %d\r\n", tmp);
+						} while (tmp != EEPROM_INI_LEN);	
+						
+						is_cmd_inisize = 0;						
 					}
 				}
 				else if (!strncmp(buff, CMD_INI_SIZE, strlen(CMD_INI_SIZE)))   // запрос размера ini-файла ("767\r\n" если если размер 767, если 480 "ERROR_COMMAND\r\n\"
 				{
-					is_cmd_inisize = 1; // означает что команда ini_size была прин€та и тогда оазмер ини файла принемаетс€ за 767, в противном случае 448
+					is_cmd_inisize = 1; // означает что команда ini_size была прин€та и тогда размер ини файла принемаетс€ за 767 при выполнении вычитки ini (CMD_INI_RD), в противном случае 480 (дл€ старого ѕќ)
 					fwrite(ANSWER_INI_SIZE, 1, strlen(ANSWER_INI_SIZE), ethTelnetFile);
 				}
 				else
