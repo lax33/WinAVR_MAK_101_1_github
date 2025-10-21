@@ -16,19 +16,21 @@
 #define SPI_SEL_IN		PINF
 #define SPI_SEL			7
 
-#define SPI_BUFF_SIZE	512
+#define SPI_BUFF_SIZE	128
+
+extern uint8_t useEthernet;
 
 void SPI_init(void);
 
 uint8_t SPI_have_data(void);
 
-uint8_t SPI_read_byte(void);
+u_char SPI_read_byte(void);
 
-void SPI_write_byte(uint8_t byte);
+u_char SPI_write_byte(u_char byte);
 
-uint16_t SPI_read_buffer(uint8_t *buff);
+u_char SPI_read_buffer(u_char *buff);
 
-void SPI_write_buffer(uint8_t *buff, uint16_t cnt);
+void SPI_write_buffer(u_char *buff, u_char cnt);
 
 THREAD(SPI_Receiver, arg);
 
