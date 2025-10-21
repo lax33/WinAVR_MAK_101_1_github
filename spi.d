@@ -1,4 +1,4 @@
-spi.o: spi.c clock.h C:/ethernut-5.1/nut/include/dev/board.h \
+spi.o: spi.c C:/ethernut-5.1/nut/include/dev/board.h \
   C:/ethernut-5.1/nutbld/include/cfg/arch.h \
   C:/ethernut-5.1/nut/include/cfg/uart.h \
   C:/ethernut-5.1/nut/include/compiler.h \
@@ -44,18 +44,14 @@ spi.o: spi.c clock.h C:/ethernut-5.1/nut/include/dev/board.h \
   C:/ethernut-5.1/nut/include/sys/event.h \
   C:/ethernut-5.1/nut/include/sys/thread.h \
   C:/ethernut-5.1/nutbld/include/cfg/memory.h \
-  C:/ethernut-5.1/nut/include/dev/debug.h \
-  c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h \
-  c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h spi.h \
-  uart.h C:/ethernut-5.1/nut/include/stdio.h \
+  C:/ethernut-5.1/nut/include/dev/debug.h spi.h uart.h \
+  C:/ethernut-5.1/nut/include/stdio.h \
   c:\winavr-20100110\bin\../lib/gcc/avr/4.3.3/include/stdarg.h network.h \
   C:/ethernut-5.1/nut/include/sys/socket.h \
   C:/ethernut-5.1/nut/include/cfg/udp.h \
   C:/ethernut-5.1/nut/include/sys/sock_var.h \
   C:/ethernut-5.1/nut/include/netinet/tcp_fsm.h services.h \
   c:/winavr-20100110/lib/gcc/../../avr/include/ctype.h
-
-clock.h:
 
 C:/ethernut-5.1/nut/include/dev/board.h:
 
@@ -150,10 +146,6 @@ C:/ethernut-5.1/nut/include/sys/thread.h:
 C:/ethernut-5.1/nutbld/include/cfg/memory.h:
 
 C:/ethernut-5.1/nut/include/dev/debug.h:
-
-c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:
-
-c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h:
 
 spi.h:
 
