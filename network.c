@@ -56,7 +56,7 @@
 //#define PROGRAMM_VERSION	0x0601	//6.01 новый MEMS опт. переключатель
 //#define PROGRAMM_VERSION	0x0602	//6.02 новый MEMS опт. переключатель и доб. возможность работать со старым ПО 1,5 и 1,3 
 //#define PROGRAMM_VERSION	0x0603  //6.03 число портов очитыватся с 11 сисмвола, в ответе переключателя на команду <<INFO_?>  
-#define PROGRAMM_VERSION	0x0603  //6.04 для CPU BlackFin 
+#define PROGRAMM_VERSION	0x0604  //6.04 для CPU BlackFin 
 
 // Ethernet - переменные
 u_char mac[] = {MYMAC};
