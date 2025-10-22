@@ -12,7 +12,7 @@ void SPI_init(void)
 	u_int i;
 
 	// setup SPI ports
-	sbi(SPI_OUT, SPI_SS)
+	sbi(SPI_OUT, SPI_SS);
 	sbi(SPI_DDR, SPI_SS);
 
 	cbi(SPI_DDR, SPI_MISO);
