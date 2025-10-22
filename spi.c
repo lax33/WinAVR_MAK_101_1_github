@@ -79,6 +79,8 @@ void SPI_write_buffer(u_char *buff, u_char cnt)
 {
 	u_char i;
 
+	if (!cnt) return;
+
 	cbi(SPI_OUT, SPI_CS);
 	_NOP();
 	_NOP();
