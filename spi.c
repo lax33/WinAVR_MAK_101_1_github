@@ -12,16 +12,16 @@ void SPI_init(void)
 	u_int i;
 
 	// setup SPI ports
-	sbi(SPI_OUT, SPI_SS);
-	sbi(SPI_DDR, SPI_SS);
+	sbi(SPI_OUT, SPI_CS);
+	sbi(SPI_DDR, SPI_CS);
 
 	cbi(SPI_DDR, SPI_MISO);
 
 	sbi(SPI_DDR, SPI_MOSI);
 	sbi(SPI_DDR, SPI_CLK);
 
-//	sbi(SPI_SEL_DDR, SPI_SEL);
-//	sbi(SPI_SEL_OUT, SPI_SEL);
+	sbi(SPI_TEMP_DDR, SPI_TEMP_PIN);
+	cbi(SPI_TEMP_OUT, SPI_TEMP_PIN);
 
 	// enable SPI - SCK = Fosc / 4
 	SPCR = (1 << SPE) | (1 << MSTR) | (1 << CPHA) | (1 << SPR0);	// set DORD, SPIE
@@ -50,10 +50,13 @@ u_char SPI_read_byte(void)
 u_char SPI_read_buffer(u_char *buff)
 {
 	u_char cnt = 0;
+	
+	sbi(SPI_TEMP_OUT, SPI_TEMP_PIN);
+
 
 	if (!SPI_have_data()) return cnt;
 
-	cbi(SPI_OUT, SPI_SS);
+	cbi(SPI_OUT, SPI_CS);
 	_NOP();
 	_NOP();
 	_NOP();
@@ -64,7 +67,10 @@ u_char SPI_read_buffer(u_char *buff)
 	_NOP();
 	_NOP();
 	_NOP();
-	sbi(SPI_OUT, SPI_SS);
+	sbi(SPI_OUT, SPI_CS);
+
+	cbi(SPI_TEMP_OUT, SPI_TEMP_PIN);
+
 
 	return cnt;
 }
@@ -73,7 +79,7 @@ void SPI_write_buffer(u_char *buff, u_char cnt)
 {
 	u_char i;
 
-	cbi(SPI_OUT, SPI_SS);
+	cbi(SPI_OUT, SPI_CS);
 	_NOP();
 	_NOP();
 	_NOP();
@@ -84,7 +90,7 @@ void SPI_write_buffer(u_char *buff, u_char cnt)
 	_NOP();
 	_NOP();
 	_NOP();
-	sbi(SPI_OUT, SPI_SS);
+	sbi(SPI_OUT, SPI_CS);
 }
 
 THREAD(SPI_Receiver, arg)

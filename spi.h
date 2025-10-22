@@ -9,12 +9,12 @@
 #define SPI_MISO		3
 #define SPI_MOSI		2
 #define SPI_CLK			1
-#define SPI_SS			0
+#define SPI_CS			0
 
-//#define SPI_SEL_DDR		DDRF
-//#define SPI_SEL_OUT		PORTF
+#define SPI_TEMP_DDR	DDRF
+#define SPI_TEMP_OUT	PORTF
 //#define SPI_SEL_IN		PINF
-//#define SPI_SEL			7
+#define SPI_TEMP_PIN	7
 
 #define SPI_BUFF_SIZE	128
 
