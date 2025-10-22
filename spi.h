@@ -11,10 +11,10 @@
 #define SPI_CLK			1
 #define SPI_SS			0
 
-#define SPI_SEL_DDR		DDRF
-#define SPI_SEL_OUT		PORTF
-#define SPI_SEL_IN		PINF
-#define SPI_SEL			7
+//#define SPI_SEL_DDR		DDRF
+//#define SPI_SEL_OUT		PORTF
+//#define SPI_SEL_IN		PINF
+//#define SPI_SEL			7
 
 #define SPI_BUFF_SIZE	128
 
